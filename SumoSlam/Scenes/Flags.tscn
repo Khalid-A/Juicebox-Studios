@@ -1,0 +1,123 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Scenes/Flags.gd" type="Script" id=1]
+[ext_resource path="res://Animations/Flag/Green/Flag-0.png" type="Texture" id=2]
+[ext_resource path="res://Animations/Flag/Purple/Flag-0.png" type="Texture" id=3]
+[ext_resource path="res://Animations/Flag/Red/Flag-0.png" type="Texture" id=4]
+[ext_resource path="res://Animations/Flag/Blue/Flag-Blue1.png" type="Texture" id=5]
+[ext_resource path="res://Animations/Flag/Red/Flag-1.png" type="Texture" id=6]
+[ext_resource path="res://Animations/Flag/Purple/Flag-3.png" type="Texture" id=7]
+[ext_resource path="res://Animations/Flag/Blue/Flag-Blue2.png" type="Texture" id=8]
+[ext_resource path="res://Animations/Flag/Red/Flag-2.png" type="Texture" id=9]
+[ext_resource path="res://Animations/Flag/Red/Flag-3.png" type="Texture" id=10]
+[ext_resource path="res://Animations/Flag/Purple/Flag-1.png" type="Texture" id=11]
+[ext_resource path="res://Animations/Flag/Purple/Flag-2.png" type="Texture" id=12]
+[ext_resource path="res://Animations/Flag/Green/Flag-3.png" type="Texture" id=13]
+[ext_resource path="res://Animations/Flag/Green/Flag-1.png" type="Texture" id=14]
+[ext_resource path="res://Animations/Flag/Blue/Flag-Blue3.png" type="Texture" id=15]
+[ext_resource path="res://Animations/Flag/Green/Flag-2.png" type="Texture" id=16]
+[ext_resource path="res://Animations/Flag/Blue/Flag-Blue0.png" type="Texture" id=17]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "0-Green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "0-Purple",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "0-Red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "1-Blue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "1-Red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "3-Purple",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "2-Blue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "2-Red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "3-Red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "1-Purple",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "2-Purple",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "3-Green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "1-Green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "3-Blue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "2-Green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "0-Blue",
+"speed": 5.0
+} ]
+
+[node name="Flags" type="Node2D"]
+position = Vector2( 496.627, -120.541 )
+scale = Vector2( 0.916917, 0.90703 )
+z_index = -50
+script = ExtResource( 1 )
+
+[node name="Flag0" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "0-Green"
+offset = Vector2( 0, 7 )
+
+[node name="Flag1" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "0-Green"
+offset = Vector2( 20, 7 )
+
+[node name="Flag2" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "0-Green"
+offset = Vector2( -20, 7 )

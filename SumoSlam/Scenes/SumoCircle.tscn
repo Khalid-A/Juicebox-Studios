@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/SumoCircle.gd" type="Script" id=1]
+[ext_resource path="res://Animations/SumoCircle/Unoccupied_0.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Unoccupied",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Assets/FFFFORWA.TTF"
+
+[sub_resource type="DynamicFont" id=4]
+size = 10
+font_data = SubResource( 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 9.25, -10, 10, 9.25, -10, 9.25, -9.25, -10 )
+
+[node name="SumoCircle" type="Area2D"]
+position = Vector2( 400, 112.5 )
+scale = Vector2( 6.25, 3 )
+z_index = 100
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="CircleAnim" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -12.75 )
+scale = Vector2( 0.16, 0.34 )
+z_index = -50
+z_as_relative = false
+frames = SubResource( 1 )
+animation = "Unoccupied"
+playing = true
+
+[node name="Arena" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.3 )
+shape = SubResource( 2 )
+
+[node name="Countdown" type="Timer" parent="."]
+
+[node name="Indicator" type="Label" parent="."]
+margin_left = 6.5
+margin_top = -16.0
+margin_right = 6.5
+margin_bottom = 1.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+max_lines_visible = 0
+
+[node name="ProgressBar" type="ColorRect" parent="."]
+margin_left = -10.0
+margin_top = 11.5
+margin_right = 10.0
+margin_bottom = 13.5
+grow_vertical = 2
+
+[node name="Platform" type="KinematicBody2D" parent="."]
+
+[node name="PlatformCollider" type="CollisionShape2D" parent="Platform"]
+position = Vector2( 0, 10.75 )
+scale = Vector2( 1.1, 0.1 )
+shape = SubResource( 5 )
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
+[connection signal="body_exited" from="." to="." method="_on_player_exited"]
+[connection signal="timeout" from="Countdown" to="." method="_on_challenge_won"]
