@@ -24,7 +24,7 @@ const PLAYER_INITS = {
 # Game constants
 const RESPAWN_TIME = 3
 const SLAMS_GOAL = 10
-const RESTART_TIME = 5
+const RESTART_TIME = 10
 
 # Sumo circle constants
 const CIRCLE_COUNTDOWN_TIME = 10.0

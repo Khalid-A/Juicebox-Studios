@@ -16,7 +16,6 @@ font_data = SubResource( 1 )
 z_index = 100
 script = ExtResource( 1 )
 quick_reset = true
-record_game_stats = true
 
 [node name="Camera" type="CanvasLayer" parent="."]
 layer = -100
