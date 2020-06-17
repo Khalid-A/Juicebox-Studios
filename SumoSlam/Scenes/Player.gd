@@ -91,7 +91,6 @@ var gravity = DOWN_GRAVITY
 var push_stun_timer = 0.0
 var taunt_stun_timer = 0.0
 var blocker = null
-var taunter_id = -1
 var sushi = null
 var sushi_anim = ""
 
@@ -211,7 +210,7 @@ func _physics_process(delta):
 func horizontal_movement(delta):
 	# Handles dash input.
 	if valid_trigger("dash"):
-			dash()
+		dash()
 	
 	# If Sumo has dashed into a wall or platform, the dash is over.
 	if sumo_state[DASH] == DASHING and is_on_wall():
@@ -362,7 +361,7 @@ func push():
 	# Push everything in the Area2D.
 	for body in push_area.get_overlapping_bodies():
 		if body != self and body.has_method("pushed"):
-			body.pushed(self)
+			body.pushed(id, dir)
 
 # Perform a block.
 func block():
@@ -374,9 +373,7 @@ func block():
 # Taunt
 func taunt():
 	sumo_state[TAUNT] = TAUNTING
-	
 	play_audio("res://Sounds//jump.wav")
-	$SumoAnim.play("Taunt" + sushi_anim + skin)
 	$TauntTimer.start(TAUNTING_TIME)
 	
 	var taunt_area
@@ -436,14 +433,14 @@ func blocked(p_blocker):
 	get_parent().player_stats[blocker.id]['blocks'] += 1
 
 # Begins launch and stun as a result of an opponent's push.
-func pushed(pusher):
+func pushed(pusher_id, pusher_dir):
 	# Update status.
 	sumo_state[PUSH_STUN] = PUSH_STUNNED
 	$SumoAnim.play("Stun" + skin)
 	
 	# Get push direction.
 	var to_me
-	if pusher.dir == LEFT:
+	if pusher_dir == LEFT:
 		to_me = Vector2.LEFT
 	else:
 		to_me = Vector2.RIGHT
@@ -457,9 +454,9 @@ func pushed(pusher):
 	velocity = (1.0 / scale.y) * to_me * PUSH_POWER
 	
 	get_parent().player_stats[id]['pushed'] += 1
-	get_parent().player_stats[pusher.id]['pushes'] += 1
+	get_parent().player_stats[pusher_id]['pushes'] += 1
 	
-func taunted(taunter):
+func taunted(taunter_id):
 	# Update status.
 	sumo_state[TAUNT_STUN] = TAUNT_STUNNED
 	$SumoAnim.play("TauntStun" + skin)
@@ -467,8 +464,6 @@ func taunted(taunter):
 	# Drop the sushi
 	if valid_trigger("drop_sushi"): 
 		drop_sushi()
-	
-	taunter_id = taunter
 	
 	velocity = Vector2(0, 0)
 	
@@ -517,7 +512,6 @@ func taunt_stun_loop(delta):
 	# Only end stun once stun time expired.
 	if taunt_stun_timer > TAUNT_STUN_TIME:
 		taunt_stun_timer = 0.0
-		taunter_id = -1
 		sumo_state[TAUNT_STUN] = NOT_TAUNT_STUNNED
 		return
 		
