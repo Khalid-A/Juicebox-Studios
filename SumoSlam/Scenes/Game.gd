@@ -193,7 +193,11 @@ func _on_player_death(player, attacker_id=-1):
 # If sushi cap has not been reached, cook sushi
 func order_sushi():
 	if sushi_count < MAX_SUSHI:
-		get_node('SushiStand %s' % ((randi() % num_sushi_stands) + 1) ).cook_sushi()
+		
+		var stand = get_node('SushiStand %s' % ((randi() % num_sushi_stands) + 1) )
+		
+		if !stand.destroyed:
+			stand.cook_sushi()
 	else:
 		yield(get_tree().create_timer(COOK_TIME), "timeout")
 		order_sushi()

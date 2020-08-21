@@ -13,6 +13,8 @@ var id
 var rung = false
 var ringer_id = -1
 
+var size
+
 enum {WEAK, MID, HEAVY}
 
 func _ready():
@@ -29,13 +31,14 @@ func get_class():
 func init(p_id, p_pos):
 	self.id = p_id
 	self.position = p_pos
+	self.size = $Gong.get_shape().get_extents().y
 	$Anim.play("Idle")
 
 #func _process(__):
 #	pass
 	
 # Reacts to push from player, triggering gong ring
-func pushed(player):
+func pushed(player_id, __, __, __):
 	
 	# if enough time has elapsed since last gong ring
 	if not rung:
@@ -43,9 +46,9 @@ func pushed(player):
 		# set gong as rung for duration of animation
 		rung = true
 		$Cooldown.start(COOLDOWN_TIME)
-		get_parent().player_stats[player.id]['gong_rings'] += 1
+		get_parent().player_stats[player_id]['gong_rings'] += 1
 		
-		var weight = get_parent().player_stats[player.id]['calories']
+		var weight = get_parent().player_stats[player_id]['calories']
 		var THRESHOLD = get_parent().CALORIE_THRESHOLDS
 		
 		# trigger gong reaction corresponding to player weight
@@ -61,7 +64,7 @@ func pushed(player):
 		elif weight >= THRESHOLD[HEAVY]:
 			$Anim.play("Hit-Heavy")
 			if ringer_id < 0:
-				ringer_id = player.id
+				ringer_id = player_id
 
 # Once gong has finished ringing, reset
 func _on_cooldown():
