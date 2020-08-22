@@ -10,3 +10,7 @@ func collision_momentum(velocity, giver, receiver, transfer_factor=2):
 	
 	return rel_scale * momentum
 	
+func sufficient_margin(prev_time, buffer):
+	
+	return OS.get_system_time_msecs() - prev_time > buffer
+	

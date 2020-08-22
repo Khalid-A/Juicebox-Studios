@@ -2,11 +2,13 @@ extends RigidBody2D
 
 enum {AVAILABLE, UNAVAILABLE}
 
-const PUSH_SCALE = 1500
+const PUSH_POWER = 1500
 
 var state
 var stand
 var size
+
+var last_hit
 
 func _ready():
 	pass
@@ -22,6 +24,7 @@ func init(p_pos):
 	self.stand = get_parent()
 	self.state = AVAILABLE
 	self.size = $Collider.get_shape().get_extents().y
+	self.last_hit = 0
 	$Sprite.play('Sushi%s' % [randi() % 5])
 	self.set_as_toplevel(true)
 
@@ -47,9 +50,11 @@ func reparent(new_parent, set_available):
 		
 func pushed(__, pusher_dir, pusher_velocity, pusher_size):
 	
+	last_hit = OS.get_system_time_secs()
+	
 	var momentum = Global.collision_momentum(pusher_velocity, pusher_size, size)
-	var x_component = (1.0 / scale.y) * pusher_dir * PUSH_SCALE
-	var y_component = Vector2(0, -1) * (PUSH_SCALE / 2.0)
+	var x_component = (1.0 / scale.y) * pusher_dir * PUSH_POWER
+	var y_component = Vector2(0, -1) * (PUSH_POWER / 2.0)
 	
 	var push_velocity = momentum + x_component + y_component
 	
