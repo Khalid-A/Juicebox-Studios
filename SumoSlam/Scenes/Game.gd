@@ -5,7 +5,6 @@ const PLAYER_NODE = preload("res://Scenes/Player.tscn")
 const FLAG_NODE = preload("res://Scenes/Flags.tscn")
 const SUMOCIRCLE_NODE = preload("res://Scenes/SumoCircle.tscn")
 const SUSHISTAND_NODE = preload("res://Scenes/SushiStand.tscn")
-const SUSHIMANAGER_NODE = preload("res://Scenes/SushiManager.tscn")
 const ARCH_NODE = preload("res://Scenes/Arch.tscn")
 
 const RED = Color(255/255.0, 33/255.0, 50/255.0)

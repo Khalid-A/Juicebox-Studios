@@ -125,6 +125,7 @@ func init(p_id, p_name, p_pos, p_skin, p_color):
 
 # Controls physics processes for the Sumo.
 func _physics_process(delta):
+	
 	# Simple wraparound. TODO: remove later.
 	self.global_position.x = wrapf(self.global_position.x, 0, get_viewport_rect().size.x)
 	

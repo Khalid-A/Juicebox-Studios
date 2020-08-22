@@ -9,3 +9,4 @@ func collision_momentum(velocity, giver, receiver, transfer_factor=2):
 	var momentum = velocity / transfer_factor
 	
 	return rel_scale * momentum
+	
