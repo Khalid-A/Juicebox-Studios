@@ -87,6 +87,7 @@ var sumo_state = [GROUNDED, DASH_READY, NOT_SLAMMING,
 # Sumo variables
 var velocity = Vector2()
 var dir = RIGHT
+var size
 var gravity = DOWN_GRAVITY
 var push_stun_timer = 0.0
 var taunt_stun_timer = 0.0
@@ -116,6 +117,7 @@ func init(p_id, p_name, p_pos, p_skin, p_color):
 	self.id = p_id
 	self.name = p_name
 	self.position = p_pos
+	self.size = $CapsuleCollider.get_shape().radius
 	self.skin = p_skin
 	self.color = p_color
 	self.isOriginal = true
@@ -123,6 +125,7 @@ func init(p_id, p_name, p_pos, p_skin, p_color):
 
 # Controls physics processes for the Sumo.
 func _physics_process(delta):
+	
 	# Simple wraparound. TODO: remove later.
 	self.global_position.x = wrapf(self.global_position.x, 0, get_viewport_rect().size.x)
 	
@@ -353,15 +356,19 @@ func push():
 	
 	# Determine which Area2D to use.
 	var push_area
+	var push_dir
 	if dir == LEFT:
 		push_area = $PushAreaLeft
+		push_dir = Vector2.LEFT
 	else:
 		push_area = $PushAreaRight
+		push_dir = Vector2.RIGHT
 	
 	# Push everything in the Area2D.
 	for body in push_area.get_overlapping_bodies():
 		if body != self and body.has_method("pushed"):
-			body.pushed(id, dir)
+			body.pushed(id, push_dir, velocity, size)
+			velocity -= Global.collision_momentum(velocity, body.size, size)
 
 # Perform a block.
 func block():
@@ -433,25 +440,25 @@ func blocked(p_blocker):
 	get_parent().player_stats[blocker.id]['blocks'] += 1
 
 # Begins launch and stun as a result of an opponent's push.
-func pushed(pusher_id, pusher_dir):
+func pushed(pusher_id, pusher_dir, pusher_velocity, pusher_size):
 	# Update status.
 	sumo_state[PUSH_STUN] = PUSH_STUNNED
 	$SumoAnim.play("Stun" + skin)
-	
-	# Get push direction.
-	var to_me
-	if pusher_dir == LEFT:
-		to_me = Vector2.LEFT
-	else:
-		to_me = Vector2.RIGHT
 		
 	# Drop the sushi
 	if valid_trigger("drop_sushi"): 
 		drop_sushi()
-
+		
 	# Set stun gravity and initial velocity.
 	gravity = DOWN_GRAVITY
-	velocity = (1.0 / scale.y) * to_me * PUSH_POWER
+	
+	var x_component = (1.0 / scale.y) * pusher_dir * PUSH_POWER
+	var y_component = Vector2(0, -1) * (PUSH_POWER / 2.0)
+	var momentum = Global.collision_momentum(pusher_velocity, pusher_size, size)
+
+	velocity += momentum + x_component + y_component
+	
+	velocity = move_and_slide(velocity, FLOOR)
 	
 	get_parent().player_stats[id]['pushed'] += 1
 	get_parent().player_stats[pusher_id]['pushes'] += 1
@@ -632,6 +639,7 @@ func update_calories():
 	var new_scale = 1.0 + min(scale_up, MAX_SCALE_UP)
 
 	scale = Vector2(new_scale, new_scale)
+	size = scale.y * $CapsuleCollider.get_shape().radius
 		
 	position.y -= scale.y * $CapsuleCollider.shape.height - prev_height
 

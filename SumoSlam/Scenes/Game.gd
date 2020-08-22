@@ -5,7 +5,6 @@ const PLAYER_NODE = preload("res://Scenes/Player.tscn")
 const FLAG_NODE = preload("res://Scenes/Flags.tscn")
 const SUMOCIRCLE_NODE = preload("res://Scenes/SumoCircle.tscn")
 const SUSHISTAND_NODE = preload("res://Scenes/SushiStand.tscn")
-const SUSHIMANAGER_NODE = preload("res://Scenes/SushiManager.tscn")
 const ARCH_NODE = preload("res://Scenes/Arch.tscn")
 
 const RED = Color(255/255.0, 33/255.0, 50/255.0)
@@ -193,7 +192,11 @@ func _on_player_death(player, attacker_id=-1):
 # If sushi cap has not been reached, cook sushi
 func order_sushi():
 	if sushi_count < MAX_SUSHI:
-		get_node('SushiStand %s' % ((randi() % num_sushi_stands) + 1) ).cook_sushi()
+		
+		var stand = get_node('SushiStand %s' % ((randi() % num_sushi_stands) + 1) )
+		
+		if !stand.destroyed:
+			stand.cook_sushi()
 	else:
 		yield(get_tree().create_timer(COOK_TIME), "timeout")
 		order_sushi()
