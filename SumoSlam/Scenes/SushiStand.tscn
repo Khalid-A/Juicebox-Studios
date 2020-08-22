@@ -9,13 +9,13 @@
 [ext_resource path="res://Animations/SushiStand/Destroyed_1.png" type="Texture" id=7]
 [ext_resource path="res://Animations/SushiStand/Destroyed_2.png" type="Texture" id=8]
 [ext_resource path="res://Animations/SushiStand/Destroyed_3.png" type="Texture" id=9]
-[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_0.png" type="Texture" id=10]
-[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_1.png" type="Texture" id=11]
-[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_2.png" type="Texture" id=12]
-[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_3.png" type="Texture" id=13]
-[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_4.png" type="Texture" id=14]
-[ext_resource path="res://Animations/SushiChef/Idle/Idle_0.png" type="Texture" id=15]
-[ext_resource path="res://Animations/SushiChef/Idle/Idle_1.png" type="Texture" id=16]
+[ext_resource path="res://Animations/SushiChef/Idle/Idle_0.png" type="Texture" id=10]
+[ext_resource path="res://Animations/SushiChef/Idle/Idle_1.png" type="Texture" id=11]
+[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_0.png" type="Texture" id=12]
+[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_1.png" type="Texture" id=13]
+[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_2.png" type="Texture" id=14]
+[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_3.png" type="Texture" id=15]
+[ext_resource path="res://Animations/SushiChef/Devastated/Devastated_4.png" type="Texture" id=16]
 [ext_resource path="res://Animations/SushiChef/Surprised/Surprise_0.png" type="Texture" id=17]
 [ext_resource path="res://Animations/SushiChef/Surprised/Surprise_1.png" type="Texture" id=18]
 [ext_resource path="res://Animations/SushiChef/Cooking/Cooking_0.png" type="Texture" id=19]
@@ -32,7 +32,7 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": false,
@@ -40,22 +40,22 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 22 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "Devastated",
-"speed": 2.5
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "Devastated",
+"speed": 2.5
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
@@ -79,7 +79,7 @@ animation = "Destroyed"
 
 [node name="StandCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Roof" type="KinematicBody2D" parent="."]
 visible = false
@@ -88,7 +88,7 @@ scale = Vector2( 2.25, 0.25 )
 collision_mask = 0
 
 [node name="RoofCollider" type="CollisionShape2D" parent="Roof"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = true
 one_way_collision = true
 
@@ -98,7 +98,7 @@ one_shot = true
 [node name="Chef" type="AnimatedSprite" parent="."]
 position = Vector2( -4, 0 )
 z_index = -55
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "Devastated"
 frame = 4
 playing = true
