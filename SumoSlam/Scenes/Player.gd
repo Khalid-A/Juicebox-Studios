@@ -353,7 +353,6 @@ func push():
 	
 	# Start push animation.
 	play_audio("res://Sounds//push.wav")
-#	$SumoAnim.set_frame(0)
 	play_anim("Push")
 	$PushTimer.start(PUSH_TIME)
 
