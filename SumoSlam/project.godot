@@ -288,7 +288,7 @@ ui_taunt3={
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Players"
 2d_physics/layer_3="Sushi"
-2d_physics/layer_4="Gong"
+2d_physics/layer_4="Structures"
 
 [rendering]
 

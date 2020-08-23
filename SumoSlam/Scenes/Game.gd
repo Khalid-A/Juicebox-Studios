@@ -32,7 +32,7 @@ const CIRCLE_COUNTDOWN_TIME = 10.0
 const MAX_SUSHI = 10
 const COOK_TIME = 5
 const SUSHI_CALORIES = 1.0
-const CALORIE_THRESHOLDS = [1, 3, 5]
+const CALORIE_THRESHOLDS = [0, 3, 5]
 
 # Game config
 var num_sumo_circles = 1

@@ -19,6 +19,7 @@ var dir
 var size
 
 var hits
+var last_hit
 var destroyed
 
 enum {WORKING, READY}
@@ -45,6 +46,7 @@ func init(p_id, p_name, p_pos):
 	self.state = READY
 	self.dir = -1
 	self.hits = 0
+	self.last_hit = 0
 	self.destroyed = false
 	$StandAnim.play("Idle")
 	$Chef.play("Idle")
@@ -75,8 +77,11 @@ func _on_CookTimer_timeout(count=1):
 		emit_signal('sushi_cooked')
 		new_sushi.init(global_position)
 		new_sushi.set_linear_velocity(get_sushi_trajectory())
+		Global.set_entity_mask_bits(self, "Structures", true)
 	
 func pushed(__, __, __, __):
+	
+	last_hit = OS.get_system_time_secs()
 	
 	react('pushed')
 	
@@ -96,6 +101,8 @@ func react(action):
 	
 	if hits >= MAX_HITS:
 		$StandAnim.play("Destroyed")
+		$RubbleCollider.set_disabled(false)
+		$StandCollider.set_disabled(true)
 		destroyed = true
 		_on_CookTimer_timeout(SUSHI_BLAST_COUNT)
 	else:

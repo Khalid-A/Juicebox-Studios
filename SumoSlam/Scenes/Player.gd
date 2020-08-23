@@ -23,8 +23,9 @@ const SLAM_GRAVITY = 5 * DOWN_GRAVITY
 
 const SLAM_STUN_TIME = 0.5
 
-const PUSH_RANGE = 24
-const PUSH_POWER = 150
+const PUSH_DISTANCE = 120
+const PUSH_TIME = 0.3
+const PUSH_POWER = 25
 const PUSH_STUN_TIME = 1.0
 
 const BLOCK_POWER = 100
@@ -92,6 +93,7 @@ var gravity = DOWN_GRAVITY
 var push_stun_timer = 0.0
 var taunt_stun_timer = 0.0
 var blocker = null
+var last_hit
 var sushi = null
 var sushi_anim = ""
 
@@ -120,8 +122,9 @@ func init(p_id, p_name, p_pos, p_skin, p_color):
 	self.size = $CapsuleCollider.get_shape().radius
 	self.skin = p_skin
 	self.color = p_color
+	self.last_hit = 0
 	self.isOriginal = true
-	$SumoAnim.play("Idle" + skin)
+	play_anim("Idle")
 
 # Controls physics processes for the Sumo.
 func _physics_process(delta):
@@ -169,7 +172,7 @@ func _physics_process(delta):
 		# Handle slam impact.
 		if sumo_state[SLAM] == SLAMMING and is_on_floor():
 			sumo_state[SLAM] = SLAMMED
-			$SumoAnim.play("SlamImpact" + skin)
+			play_anim("SlamImpact")
 			$SlamTimer.start(SLAM_STUN_TIME)
 			velocity = Vector2.ZERO
 			return
@@ -199,15 +202,14 @@ func _physics_process(delta):
 		if sumo_state[DASH] != DASHING:
 			vertical_movement(delta)
 		
-		# Checking for sushi
-		if valid_trigger("check_sushi"):
-			check_sushi(delta)
+		# Move according to velocity.
+		velocity = move_and_slide(velocity, FLOOR)
 		
 		# Check all player collisions.
 		player_collision(delta)
 		
-		# Move according to velocity.
-		velocity = move_and_slide(velocity, FLOOR)
+		# Check all object collisions.
+		object_collision(delta)
 
 # Handles horizontal movement.
 func horizontal_movement(delta):
@@ -267,7 +269,7 @@ func move(delta):
 	
 	# Update sprite to reflect movement.
 	if valid_trigger("walk"):
-		$SumoAnim.play("Walk" + sushi_anim + skin)
+		play_anim("Walk")
 	$SumoAnim.set_scale(Vector2(direction,1))
 
 # Halts the Sumo's x-axis movement and controls animation accordingly.
@@ -275,11 +277,11 @@ func idle(delta):
 	velocity.x += -velocity.x * delta / DECELERATION_TIME
 	if valid_trigger("idle"):
 		if sumo_state[FOOD] == EATING:
-			$SumoAnim.play("Eating" + skin)
+			play_anim("Eating")
 		elif sumo_state[TAUNT] == TAUNTING:
-			$SumoAnim.play("Taunt" + sushi_anim + skin)
+			play_anim("Taunt")
 		else:
-			$SumoAnim.play("Idle" + sushi_anim + skin)
+			play_anim("Idle")
 
 # Begins the Sumo's dash.
 func dash():
@@ -294,7 +296,7 @@ func dash():
 	velocity.y = 0
 	
 	# Start DashTimer, which will stop dash once DASH_TIME has passed.
-	$SumoAnim.play("Dash" + sushi_anim + skin)
+	play_anim("Dash")
 	$DashTimer.start(DASH_TIME)
 	
 	get_parent().player_stats[id]['dashes'] += 1
@@ -306,7 +308,7 @@ func initial_jump():
 	gravity = HOLD_UP_GRAVITY
 	velocity.y = -sqrt(2 * scale.y * gravity * MAX_JUMP_HEIGHT)
 	if valid_trigger("jump"):
-		$SumoAnim.play("Jump" + sushi_anim + skin)
+		play_anim("Jump")
 
 # Begins the Sumo's second jump.
 func double_jump():
@@ -319,7 +321,7 @@ func double_jump():
 	gravity = HOLD_UP_GRAVITY
 	velocity.y = -sqrt(2 * scale.y * gravity * MAX_JUMP_HEIGHT)
 	if valid_trigger("jump"):
-		$SumoAnim.play("Jump" + sushi_anim + skin)
+		play_anim("Jump")
 		
 	get_parent().player_stats[id]['double_jumps'] += 1
 
@@ -332,13 +334,13 @@ func fall():
 	if sumo_state[JUMP] != DOUBLE_JUMPING:
 		sumo_state[JUMP] = AIRBORNE
 	if valid_trigger("fall"):
-		$SumoAnim.play("Fall" + sushi_anim + skin)
+		play_anim("Fall")
 	gravity = DOWN_GRAVITY
 
 # Changes the Sumo's gravity for slamming and controls animation accordingly.
 func slam():
 	play_audio("res://Sounds//slam-sound.wav")
-	$SumoAnim.play("Slam" + sushi_anim + skin)
+	play_anim("Slam")
 	$CapsuleCollider.set_disabled(true)
 	$SlamCollider.set_disabled(false)
 	sumo_state[SLAM] = SLAMMING
@@ -351,30 +353,25 @@ func push():
 	
 	# Start push animation.
 	play_audio("res://Sounds//push.wav")
-	$SumoAnim.set_frame(0)
-	$SumoAnim.play("Push" + skin)
-	
-	# Determine which Area2D to use.
-	var push_area
-	var push_dir
-	if dir == LEFT:
-		push_area = $PushAreaLeft
-		push_dir = Vector2.LEFT
-	else:
-		push_area = $PushAreaRight
-		push_dir = Vector2.RIGHT
-	
-	# Push everything in the Area2D.
-	for body in push_area.get_overlapping_bodies():
-		if body != self and body.has_method("pushed"):
-			body.pushed(id, push_dir, velocity, size)
-			velocity -= Global.collision_momentum(velocity, body.size, size)
+	play_anim("Push")
+	$PushTimer.start(PUSH_TIME)
+
+	var push_speed = PUSH_DISTANCE / PUSH_TIME
+	match dir:
+		LEFT:
+			$PushColliderLeft.set_disabled(false)
+			velocity.x += -push_speed
+			
+		RIGHT:
+			$PushColliderRight.set_disabled(false)
+			velocity.x += push_speed
+	velocity.y = 0
 
 # Perform a block.
 func block():
 #	play_audio("res://Sounds//block.wav")
 	sumo_state[BLOCK] = BLOCKING
-	$SumoAnim.play("Block" + skin)
+	play_anim("Block")
 	$BlockTimer.start(BLOCK_TIME)
 	
 # Taunt
@@ -415,7 +412,7 @@ func death(attacker_id=-1):
 		
 		# Make sure death animation plays behind other players.
 		z_index = -1
-		$SumoAnim.play("Death" + skin)
+		play_anim("Death")
 		yield($SumoAnim, "animation_finished")
 		
 		# Send signal to game indicating death.
@@ -426,7 +423,7 @@ func blocked(p_blocker):
 	# Update status.
 	sumo_state[BLOCK_STUN] = BLOCK_STUNNED
 	sumo_state[SLAM] = NOT_SLAMMING
-	$SumoAnim.play("BlockStun" + skin)
+	play_anim("BlockStun")
 	blocker = p_blocker
 	
 	# Drop the sushi
@@ -443,7 +440,7 @@ func blocked(p_blocker):
 func pushed(pusher_id, pusher_dir, pusher_velocity, pusher_size):
 	# Update status.
 	sumo_state[PUSH_STUN] = PUSH_STUNNED
-	$SumoAnim.play("Stun" + skin)
+	play_anim("Stun")
 		
 	# Drop the sushi
 	if valid_trigger("drop_sushi"): 
@@ -466,7 +463,7 @@ func pushed(pusher_id, pusher_dir, pusher_velocity, pusher_size):
 func taunted(taunter_id):
 	# Update status.
 	sumo_state[TAUNT_STUN] = TAUNT_STUNNED
-	$SumoAnim.play("TauntStun" + skin)
+	play_anim("TauntStun")
 	
 	# Drop the sushi
 	if valid_trigger("drop_sushi"): 
@@ -525,18 +522,41 @@ func taunt_stun_loop(delta):
 	# Apply gravity and move.
 	velocity.y += scale.y * gravity * delta
 	velocity = move_and_slide(velocity, FLOOR)
+	
+func object_collision(delta):
+	
+	Global.set_entity_mask_bits(self, ["Sushi", "Structures"], true)
+	
+	# Check for collisions
+	var collision = move_and_collide(velocity * delta, false, true, true)
+	if collision:
+		var object = collision.collider
+		
+		if object.is_class("Sushi") and valid_trigger("grab_sushi"):
+			hold_sushi(object)
+			
+		elif sumo_state[PUSH] == PUSHING and object.has_method("pushed") and Global.sufficient_margin(object.last_hit, PUSH_TIME):
+			object.pushed(id, Vector2.RIGHT if dir == RIGHT else Vector2.LEFT, velocity, size)
+			velocity -= Global.collision_momentum(velocity, object.size, size)
+
+	Global.set_entity_mask_bits(self, ["Sushi", "Structures"], false)
 
 # Check for player collisions.
 func player_collision(delta):
 	# Check player layer for collisions.
-	set_collision_mask_bit(1, true)
+	Global.set_entity_mask_bits(self, "Players", true)
 	
 	# Check for collisions
 	var collision = move_and_collide(velocity * delta, true, true, true)
 	if collision and collision.collider.is_class("Player") and collision.collider.blocker != self:
 		var other = collision.collider
+		
+		if sumo_state[PUSH] == PUSHING and other.sumo_state[SLAM] == NOT_SLAMMING and Global.sufficient_margin(other.last_hit, PUSH_TIME):
+			other.pushed(id, Vector2.RIGHT if dir == RIGHT else Vector2.LEFT, velocity, size)
+			velocity -= Global.collision_momentum(velocity, other.size, size)
+		
 		# Other player dies.
-		if sumo_state[SLAM] == SLAMMING and other.sumo_state[BLOCK] == NOT_BLOCKING:
+		elif sumo_state[SLAM] == SLAMMING and other.sumo_state[BLOCK] == NOT_BLOCKING:
 			other.death(id)
 			
 		# Other player blocked slam.
@@ -550,27 +570,12 @@ func player_collision(delta):
 			bounce(other.global_position)
 	
 	# Reset player collision layer.
-	set_collision_mask_bit(1, false)
+	Global.set_entity_mask_bits(self, "Players", false)
 
 # Bounce away from "from_pos".
 func bounce(from_pos):
 	var bounce_dir = from_pos.direction_to(global_position)
 	velocity = bounce_dir * BOUNCE_POWER
-
-# Checks for sushi  while Sumo is moving.
-func check_sushi(delta):
-	# Enable the scanning of sushi collision layer.
-	set_collision_mask_bit(2, true)
-	
-	# Perform a test move to see if there would be a collision. To detect Rigidbody2D collisions, set infinite_inertia = false
-	var collision = move_and_collide(velocity * delta, false, true, true)
-	
-	# If there is a collision with a sushi, trigger grab.
-	if collision and collision.collider.is_class("Sushi"):
-		hold_sushi(collision.collider)
-	
-	# Reset the collision mask to what it was before this call.
-	set_collision_mask_bit(2, false)
 
 # Reparent the sushi to be a child of the player
 func hold_sushi(node):
@@ -600,7 +605,12 @@ func eat_sushi():
 # Runs when DashTimer times out, and ends a dash.
 func _on_DashTimer_timeout():
 	sumo_state[DASH] = DASHED
-
+	
+func _on_PushTimer_timeout():
+	sumo_state[PUSH] = NOT_PUSHING
+	$PushColliderLeft.set_disabled(true)
+	$PushColliderRight.set_disabled(true)
+	
 # Runs when SlamTimer times out, and ends the slam stun.
 func _on_SlamTimer_timeout():
 	sumo_state[SLAM] = NOT_SLAMMING
@@ -623,10 +633,8 @@ func _on_EatTimer_timeout():
 func _on_TauntTimer_timeout():
 	sumo_state[TAUNT] = NOT_TAUNTING
 	
-# Currently resets push_state once push animation finishes.
 func _on_SumoAnim_timeout():
-	if $SumoAnim.get_animation() == "Push" + skin:
-		sumo_state[PUSH] = NOT_PUSHING
+	pass
 	
 func update_calories():
 	get_parent().player_stats[id]['calories'] += get_parent().SUSHI_CALORIES
@@ -655,6 +663,20 @@ func synchronize(player):
 func play_audio(file):
 	$SumoAudio.set_stream(load(file))
 	$SumoAudio.play()
+	
+func play_anim(action):
+	
+	var extension
+	
+	match action:
+		
+		"Idle", "Walk", "Jump", "Fall", "Slam", "Push", "Taunt", "Dash":
+			extension = sushi_anim + skin
+			
+		"Eating", "Block", "TauntStun", "BlockStun", "Stun", "Death", "SlamImpact":
+			extension = skin
+			
+	$SumoAnim.play(action + extension)
 		
 func valid_trigger(action):
 	
@@ -701,10 +723,9 @@ func valid_trigger(action):
 					and sumo_state[SLAM] == NOT_SLAMMING \
 					and sumo_state[BLOCK] == NOT_BLOCKING \
 					and is_on_floor()
-		"check_sushi":
+		"grab_sushi":
 			return sumo_state[FOOD] == NOT_HOLDING \
 					and sumo_state[SLAM] == NOT_SLAMMING \
-					and sumo_state[PUSH] == NOT_PUSHING \
 					and sumo_state[TAUNT] == NOT_TAUNTING \
 					and sumo_state[PUSH_STUN] == NOT_PUSH_STUNNED \
 					and sumo_state[DASH] != DASHING

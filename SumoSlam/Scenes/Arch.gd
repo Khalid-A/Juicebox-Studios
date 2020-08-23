@@ -13,6 +13,8 @@ var id
 var rung = false
 var ringer_id = -1
 
+var last_hit
+
 var size
 
 enum {WEAK, MID, HEAVY}
@@ -32,6 +34,7 @@ func init(p_id, p_pos):
 	self.id = p_id
 	self.position = p_pos
 	self.size = $Gong.get_shape().get_extents().y
+	self.last_hit = 0
 	$Anim.play("Idle")
 
 #func _process(__):
