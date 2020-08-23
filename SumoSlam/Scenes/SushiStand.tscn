@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/SushiStand.gd" type="Script" id=1]
 [ext_resource path="res://Animations/SushiStand/Hit_0.png" type="Texture" id=2]
@@ -68,14 +68,18 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 20, 11 )
+
 [node name="SushiStand" type="RigidBody2D"]
-collision_layer = 16
+collision_layer = 8
 script = ExtResource( 1 )
 
 [node name="StandAnim" type="AnimatedSprite" parent="."]
 z_index = -50
 frames = SubResource( 1 )
 animation = "Destroyed"
+frame = 3
 
 [node name="StandCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
@@ -104,5 +108,10 @@ frame = 4
 playing = true
 
 [node name="ReactionTimer" type="Timer" parent="."]
+
+[node name="RubbleCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 14 )
+shape = SubResource( 5 )
+disabled = true
 [connection signal="timeout" from="CookTimer" to="." method="_on_CookTimer_timeout"]
 [connection signal="timeout" from="ReactionTimer" to="." method="_on_ReactionTimer_timeout"]

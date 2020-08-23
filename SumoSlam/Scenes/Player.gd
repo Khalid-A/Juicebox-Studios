@@ -25,7 +25,7 @@ const SLAM_STUN_TIME = 0.5
 
 const PUSH_DISTANCE = 120
 const PUSH_TIME = 0.3
-const PUSH_POWER = 60
+const PUSH_POWER = 25
 const PUSH_STUN_TIME = 1.0
 
 const BLOCK_POWER = 100
@@ -524,9 +524,8 @@ func taunt_stun_loop(delta):
 	velocity = move_and_slide(velocity, FLOOR)
 	
 func object_collision(delta):
-	set_collision_mask_bit(2, true)
-	set_collision_mask_bit(3, true)
-	set_collision_mask_bit(4, true)
+	
+	Global.set_entity_mask_bits(self, ["Sushi", "Structures"], true)
 	
 	# Check for collisions
 	var collision = move_and_collide(velocity * delta, false, true, true)
@@ -539,15 +538,13 @@ func object_collision(delta):
 		elif sumo_state[PUSH] == PUSHING and object.has_method("pushed") and Global.sufficient_margin(object.last_hit, PUSH_TIME):
 			object.pushed(id, Vector2.RIGHT if dir == RIGHT else Vector2.LEFT, velocity, size)
 			velocity -= Global.collision_momentum(velocity, object.size, size)
-		
-	set_collision_mask_bit(2, false)
-	set_collision_mask_bit(3, false)
-	set_collision_mask_bit(4, false)
+
+	Global.set_entity_mask_bits(self, ["Sushi", "Structures"], false)
 
 # Check for player collisions.
 func player_collision(delta):
 	# Check player layer for collisions.
-	set_collision_mask_bit(1, true)
+	Global.set_entity_mask_bits(self, "Players", true)
 	
 	# Check for collisions
 	var collision = move_and_collide(velocity * delta, true, true, true)
@@ -573,7 +570,7 @@ func player_collision(delta):
 			bounce(other.global_position)
 	
 	# Reset player collision layer.
-	set_collision_mask_bit(1, false)
+	Global.set_entity_mask_bits(self, "Players", false)
 
 # Bounce away from "from_pos".
 func bounce(from_pos):

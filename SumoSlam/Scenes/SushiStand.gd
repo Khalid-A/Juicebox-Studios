@@ -77,7 +77,7 @@ func _on_CookTimer_timeout(count=1):
 		emit_signal('sushi_cooked')
 		new_sushi.init(global_position)
 		new_sushi.set_linear_velocity(get_sushi_trajectory())
-		new_sushi.set_collision_mask_bit(5, true)
+		Global.set_entity_mask_bits(self, "Structures", true)
 	
 func pushed(__, __, __, __):
 	
@@ -101,6 +101,8 @@ func react(action):
 	
 	if hits >= MAX_HITS:
 		$StandAnim.play("Destroyed")
+		$RubbleCollider.set_disabled(false)
+		$StandCollider.set_disabled(true)
 		destroyed = true
 		_on_CookTimer_timeout(SUSHI_BLAST_COUNT)
 	else:
