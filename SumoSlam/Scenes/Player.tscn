@@ -1,4 +1,4 @@
-[gd_scene load_steps=255 format=2]
+[gd_scene load_steps=275 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Animations/SushiAnimations/push/Green/Push_00000.png" type="Texture" id=2]
@@ -214,41 +214,61 @@
 [ext_resource path="res://Animations/Taunt/red/sumo_taunt0000.png" type="Texture" id=212]
 [ext_resource path="res://Animations/Taunt/red/sumo_taunt0001.png" type="Texture" id=213]
 [ext_resource path="res://Animations/SushiAnimations/jump/Blue/blue-sushi-sumo-jump0001.png" type="Texture" id=214]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0000.png" type="Texture" id=215]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0001.png" type="Texture" id=216]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0002.png" type="Texture" id=217]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0003.png" type="Texture" id=218]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0004.png" type="Texture" id=219]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0005.png" type="Texture" id=220]
-[ext_resource path="res://Animations/Slam/Green/sumo-slam0000-green.png.png" type="Texture" id=221]
-[ext_resource path="res://Animations/Push/Red/Push_00000.png" type="Texture" id=222]
-[ext_resource path="res://Animations/Push/Red/Push_00001.png" type="Texture" id=223]
-[ext_resource path="res://Animations/Push/Red/Push_00002.png" type="Texture" id=224]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0001.png" type="Texture" id=225]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0002.png" type="Texture" id=226]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0003.png" type="Texture" id=227]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0004.png" type="Texture" id=228]
-[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0000.png" type="Texture" id=229]
-[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0001.png" type="Texture" id=230]
-[ext_resource path="res://Animations/SushiAnimations/slam/Blue/blue-sushu-sumo-slam0000.png" type="Texture" id=231]
-[ext_resource path="res://Animations/Eating/Red/red-sumo-eating0000.png" type="Texture" id=232]
-[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0003.png" type="Texture" id=233]
-[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0004.png" type="Texture" id=234]
-[ext_resource path="res://Animations/Push/Purple/Push_00000.png" type="Texture" id=235]
-[ext_resource path="res://Animations/Push/Purple/Push_00001.png" type="Texture" id=236]
-[ext_resource path="res://Animations/Push/Purple/Push_00002.png" type="Texture" id=237]
-[ext_resource path="res://Animations/Push/Blue/Push_00000.png" type="Texture" id=238]
-[ext_resource path="res://Animations/Push/Blue/Push_00001.png" type="Texture" id=239]
-[ext_resource path="res://Animations/Push/Blue/Push_00002.png" type="Texture" id=240]
-[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00000.png" type="Texture" id=241]
-[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00001.png" type="Texture" id=242]
-[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00002.png" type="Texture" id=243]
-[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00000.png" type="Texture" id=244]
-[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00001.png" type="Texture" id=245]
-[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00002.png" type="Texture" id=246]
-[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00000.png" type="Texture" id=247]
-[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00001.png" type="Texture" id=248]
-[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00002.png" type="Texture" id=249]
+[ext_resource path="res://Animations/Slam/Green/sumo-slam0000-green.png.png" type="Texture" id=215]
+[ext_resource path="res://Animations/Push/Red/Push_00000.png" type="Texture" id=216]
+[ext_resource path="res://Animations/Push/Red/Push_00001.png" type="Texture" id=217]
+[ext_resource path="res://Animations/Push/Red/Push_00002.png" type="Texture" id=218]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0001.png" type="Texture" id=219]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0002.png" type="Texture" id=220]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0003.png" type="Texture" id=221]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0004.png" type="Texture" id=222]
+[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0000.png" type="Texture" id=223]
+[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0001.png" type="Texture" id=224]
+[ext_resource path="res://Animations/SushiAnimations/slam/Blue/blue-sushu-sumo-slam0000.png" type="Texture" id=225]
+[ext_resource path="res://Animations/Eating/Red/red-sumo-eating0000.png" type="Texture" id=226]
+[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0003.png" type="Texture" id=227]
+[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0004.png" type="Texture" id=228]
+[ext_resource path="res://Animations/Push/Purple/Push_00000.png" type="Texture" id=229]
+[ext_resource path="res://Animations/Push/Purple/Push_00001.png" type="Texture" id=230]
+[ext_resource path="res://Animations/Push/Purple/Push_00002.png" type="Texture" id=231]
+[ext_resource path="res://Animations/Push/Blue/Push_00000.png" type="Texture" id=232]
+[ext_resource path="res://Animations/Push/Blue/Push_00001.png" type="Texture" id=233]
+[ext_resource path="res://Animations/Push/Blue/Push_00002.png" type="Texture" id=234]
+[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00000.png" type="Texture" id=235]
+[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00001.png" type="Texture" id=236]
+[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00002.png" type="Texture" id=237]
+[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00000.png" type="Texture" id=238]
+[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00001.png" type="Texture" id=239]
+[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00002.png" type="Texture" id=240]
+[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00000.png" type="Texture" id=241]
+[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00001.png" type="Texture" id=242]
+[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00002.png" type="Texture" id=243]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0000.png" type="Texture" id=244]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0001.png" type="Texture" id=245]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0002.png" type="Texture" id=246]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0003.png" type="Texture" id=247]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0004.png" type="Texture" id=248]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0005.png" type="Texture" id=249]
+[ext_resource path="res://Animations/PushStun/Green/stun0.png" type="Texture" id=250]
+[ext_resource path="res://Animations/PushStun/Green/stun1.png" type="Texture" id=251]
+[ext_resource path="res://Animations/PushStun/Green/stun2.png" type="Texture" id=252]
+[ext_resource path="res://Animations/PushStun/Green/stun3.png" type="Texture" id=253]
+[ext_resource path="res://Animations/PushStun/Green/stun4.png" type="Texture" id=254]
+[ext_resource path="res://Animations/PushStun/Red/stun0.png" type="Texture" id=255]
+[ext_resource path="res://Animations/PushStun/Red/stun1.png" type="Texture" id=256]
+[ext_resource path="res://Animations/PushStun/Red/stun2.png" type="Texture" id=257]
+[ext_resource path="res://Animations/PushStun/Red/stun3.png" type="Texture" id=258]
+[ext_resource path="res://Animations/PushStun/Red/stun4.png" type="Texture" id=259]
+[ext_resource path="res://Animations/PushStun/Purple/stun0.png" type="Texture" id=260]
+[ext_resource path="res://Animations/PushStun/Purple/stun1.png" type="Texture" id=261]
+[ext_resource path="res://Animations/PushStun/Purple/stun2.png" type="Texture" id=262]
+[ext_resource path="res://Animations/PushStun/Purple/stun3.png" type="Texture" id=263]
+[ext_resource path="res://Animations/PushStun/Purple/stun4.png" type="Texture" id=264]
+[ext_resource path="res://Animations/PushStun/Blue/stun0.png" type="Texture" id=265]
+[ext_resource path="res://Animations/PushStun/Blue/stun1.png" type="Texture" id=266]
+[ext_resource path="res://Animations/PushStun/Blue/stun2.png" type="Texture" id=267]
+[ext_resource path="res://Animations/PushStun/Blue/stun3.png" type="Texture" id=268]
+[ext_resource path="res://Animations/PushStun/Blue/stun4.png" type="Texture" id=269]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -742,12 +762,7 @@ animations = [ {
 "name": "Block-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 215 ), ExtResource( 216 ), ExtResource( 217 ), ExtResource( 218 ), ExtResource( 219 ), ExtResource( 220 ) ],
-"loop": true,
-"name": "Walk-Sushi-Red",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 221 ) ],
+"frames": [ ExtResource( 215 ) ],
 "loop": false,
 "name": "Slam-Green",
 "speed": 5.0
@@ -757,60 +772,85 @@ animations = [ {
 "name": "Fall-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 222 ), ExtResource( 223 ), ExtResource( 224 ) ],
+"frames": [ ExtResource( 216 ), ExtResource( 217 ), ExtResource( 218 ) ],
 "loop": false,
 "name": "Push-Red",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 225 ), ExtResource( 226 ), ExtResource( 227 ), ExtResource( 228 ) ],
+"frames": [ ExtResource( 219 ), ExtResource( 220 ), ExtResource( 221 ), ExtResource( 222 ) ],
 "loop": false,
 "name": "SlamImpact-Red",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 229 ), ExtResource( 230 ) ],
+"frames": [ ExtResource( 223 ), ExtResource( 224 ) ],
 "loop": true,
 "name": "Taunt-Sushi-Red",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 231 ) ],
+"frames": [ ExtResource( 225 ) ],
 "loop": false,
 "name": "Slam-Sushi-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 232 ) ],
+"frames": [ ExtResource( 226 ) ],
 "loop": false,
 "name": "EatingStart-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 233 ), ExtResource( 234 ) ],
+"frames": [ ExtResource( 227 ), ExtResource( 228 ) ],
 "loop": true,
 "name": "Dash-Sushi-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 235 ), ExtResource( 236 ), ExtResource( 237 ) ],
+"frames": [ ExtResource( 229 ), ExtResource( 230 ), ExtResource( 231 ) ],
 "loop": false,
 "name": "Push-Purple",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 238 ), ExtResource( 239 ), ExtResource( 240 ) ],
+"frames": [ ExtResource( 232 ), ExtResource( 233 ), ExtResource( 234 ) ],
 "loop": false,
 "name": "Push-Blue",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 241 ), ExtResource( 242 ), ExtResource( 243 ) ],
+"frames": [ ExtResource( 235 ), ExtResource( 236 ), ExtResource( 237 ) ],
 "loop": false,
 "name": "Push-Sushi-Purple",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 244 ), ExtResource( 245 ), ExtResource( 246 ) ],
+"frames": [ ExtResource( 238 ), ExtResource( 239 ), ExtResource( 240 ) ],
 "loop": false,
 "name": "Push-Sushi-Blue",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 247 ), ExtResource( 248 ), ExtResource( 249 ) ],
+"frames": [ ExtResource( 241 ), ExtResource( 242 ), ExtResource( 243 ) ],
 "loop": false,
 "name": "Push-Sushi-Red",
 "speed": 18.0
+}, {
+"frames": [ ExtResource( 244 ), ExtResource( 245 ), ExtResource( 246 ), ExtResource( 247 ), ExtResource( 248 ), ExtResource( 249 ) ],
+"loop": true,
+"name": "Walk-Sushi-Red",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 250 ), ExtResource( 251 ), ExtResource( 252 ), ExtResource( 253 ), ExtResource( 254 ) ],
+"loop": false,
+"name": "PushStun-Green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 255 ), ExtResource( 256 ), ExtResource( 257 ), ExtResource( 258 ), ExtResource( 259 ) ],
+"loop": false,
+"name": "PushStun-Red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 260 ), ExtResource( 261 ), ExtResource( 262 ), ExtResource( 263 ), ExtResource( 264 ) ],
+"loop": false,
+"name": "PushStun-Purple",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 265 ), ExtResource( 266 ), ExtResource( 267 ), ExtResource( 268 ), ExtResource( 269 ) ],
+"loop": false,
+"name": "PushStun-Blue",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -834,7 +874,7 @@ script = ExtResource( 1 )
 
 [node name="SumoAnim" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Push-Sushi-Green"
+animation = "PushStun-Red"
 
 [node name="CapsuleCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2.5 )

@@ -25,7 +25,7 @@ const SLAM_STUN_TIME = 0.5
 
 const PUSH_DISTANCE = 120
 const PUSH_TIME = 0.3
-const PUSH_POWER = 25
+const PUSH_POWER = 30
 const PUSH_STUN_TIME = 1.0
 
 const BLOCK_POWER = 100
@@ -303,7 +303,7 @@ func dash():
 
 # Begins the Sumo's jump trajectory and controls animation accordingly.
 func initial_jump():
-	play_audio("res://Sounds//jump.wav")
+#	play_audio("res://Sounds//jump.wav")
 	sumo_state[JUMP] = AIRBORNE
 	gravity = HOLD_UP_GRAVITY
 	velocity.y = -sqrt(2 * scale.y * gravity * MAX_JUMP_HEIGHT)
@@ -312,7 +312,7 @@ func initial_jump():
 
 # Begins the Sumo's second jump.
 func double_jump():
-	play_audio("res://Sounds//jump.wav")
+#	play_audio("res://Sounds//jump.wav")
 	sumo_state[JUMP] = DOUBLE_JUMPING
 	if sumo_state[SLAM] == SLAMMING:
 		sumo_state[SLAM] = NOT_SLAMMING
@@ -339,7 +339,7 @@ func fall():
 
 # Changes the Sumo's gravity for slamming and controls animation accordingly.
 func slam():
-	play_audio("res://Sounds//slam-sound.wav")
+#	play_audio("res://Sounds//slam-sound.wav")
 	play_anim("Slam")
 	$CapsuleCollider.set_disabled(true)
 	$SlamCollider.set_disabled(false)
@@ -352,7 +352,7 @@ func push():
 	sumo_state[PUSH] = PUSHING
 	
 	# Start push animation.
-	play_audio("res://Sounds//push.wav")
+#	play_audio("res://Sounds//push.wav")
 	play_anim("Push")
 	$PushTimer.start(PUSH_TIME)
 
@@ -377,7 +377,7 @@ func block():
 # Taunt
 func taunt():
 	sumo_state[TAUNT] = TAUNTING
-	play_audio("res://Sounds//jump.wav")
+#	play_audio("res://Sounds//jump.wav")
 	$TauntTimer.start(TAUNTING_TIME)
 	
 	var taunt_area
@@ -401,7 +401,7 @@ func death(attacker_id=-1):
 	if blocker != null:
 		blocker.sumo_state[BLOCK] = NOT_BLOCKING
 	
-	play_audio("res://Sounds/death.wav")
+#	play_audio("res://Sounds/death.wav")
 	
 	# Start the dying sequence.
 	if sumo_state[LIFE] != DYING:
@@ -440,7 +440,11 @@ func blocked(p_blocker):
 func pushed(pusher_id, pusher_dir, pusher_velocity, pusher_size):
 	# Update status.
 	sumo_state[PUSH_STUN] = PUSH_STUNNED
-	play_anim("Stun")
+	
+	var new_dir = pusher_dir * Vector2(-1, 0) + Vector2(0, 1)
+	$SumoAnim.set_scale(new_dir)
+	dir = RIGHT if new_dir.x == 1 else LEFT
+	play_anim("PushStun")
 		
 	# Drop the sushi
 	if valid_trigger("drop_sushi"): 
@@ -597,7 +601,7 @@ func drop_sushi():
 
 # Eat sushi
 func eat_sushi():
-	play_audio("res://Sounds//jump.wav")
+#	play_audio("res://Sounds//jump.wav")
 	sumo_state[FOOD] = EATING
 	sushi_anim = ""
 	$EatTimer.start(SUSHI_EATING_TIME)
@@ -660,9 +664,9 @@ func synchronize(player):
 	$SumoAnim.set_animation(animation)
 	$SumoAnim.set_frame(frame)
 
-func play_audio(file):
-	$SumoAudio.set_stream(load(file))
-	$SumoAudio.play()
+#func play_audio(file):
+#	$SumoAudio.set_stream(load(file))
+#	$SumoAudio.play()
 	
 func play_anim(action):
 	
@@ -673,7 +677,7 @@ func play_anim(action):
 		"Idle", "Walk", "Jump", "Fall", "Slam", "Push", "Taunt", "Dash":
 			extension = sushi_anim + skin
 			
-		"Eating", "Block", "TauntStun", "BlockStun", "Stun", "Death", "SlamImpact":
+		"Eating", "Block", "TauntStun", "BlockStun", "PushStun", "Death", "SlamImpact":
 			extension = skin
 			
 	$SumoAnim.play(action + extension)

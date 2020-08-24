@@ -1,22 +1,30 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Flags.gd" type="Script" id=1]
-[ext_resource path="res://Animations/Flag/Green/Flag-0.png" type="Texture" id=2]
-[ext_resource path="res://Animations/Flag/Purple/Flag-0.png" type="Texture" id=3]
-[ext_resource path="res://Animations/Flag/Red/Flag-0.png" type="Texture" id=4]
-[ext_resource path="res://Animations/Flag/Blue/Flag-Blue1.png" type="Texture" id=5]
-[ext_resource path="res://Animations/Flag/Red/Flag-1.png" type="Texture" id=6]
-[ext_resource path="res://Animations/Flag/Purple/Flag-3.png" type="Texture" id=7]
-[ext_resource path="res://Animations/Flag/Blue/Flag-Blue2.png" type="Texture" id=8]
-[ext_resource path="res://Animations/Flag/Red/Flag-2.png" type="Texture" id=9]
-[ext_resource path="res://Animations/Flag/Red/Flag-3.png" type="Texture" id=10]
-[ext_resource path="res://Animations/Flag/Purple/Flag-1.png" type="Texture" id=11]
-[ext_resource path="res://Animations/Flag/Purple/Flag-2.png" type="Texture" id=12]
-[ext_resource path="res://Animations/Flag/Green/Flag-3.png" type="Texture" id=13]
-[ext_resource path="res://Animations/Flag/Green/Flag-1.png" type="Texture" id=14]
-[ext_resource path="res://Animations/Flag/Blue/Flag-Blue3.png" type="Texture" id=15]
-[ext_resource path="res://Animations/Flag/Green/Flag-2.png" type="Texture" id=16]
-[ext_resource path="res://Animations/Flag/Blue/Flag-Blue0.png" type="Texture" id=17]
+[ext_resource path="res://Animations/Flag/Green/Flag0.png" type="Texture" id=2]
+[ext_resource path="res://Animations/Flag/Purple/Flag0.png" type="Texture" id=3]
+[ext_resource path="res://Animations/Flag/Red/Flag0.png" type="Texture" id=4]
+[ext_resource path="res://Animations/Flag/Blue/Flag1-1.png" type="Texture" id=5]
+[ext_resource path="res://Animations/Flag/Blue/Flag1-2.png" type="Texture" id=6]
+[ext_resource path="res://Animations/Flag/Blue/Flag1-3.png" type="Texture" id=7]
+[ext_resource path="res://Animations/Flag/Red/Flag1-1.png" type="Texture" id=8]
+[ext_resource path="res://Animations/Flag/Red/Flag1-2.png" type="Texture" id=9]
+[ext_resource path="res://Animations/Flag/Red/Flag1-3.png" type="Texture" id=10]
+[ext_resource path="res://Animations/Flag/Purple/Flag3.png" type="Texture" id=11]
+[ext_resource path="res://Animations/Flag/Blue/Flag2.png" type="Texture" id=12]
+[ext_resource path="res://Animations/Flag/Red/Flag2.png" type="Texture" id=13]
+[ext_resource path="res://Animations/Flag/Red/Flag3.png" type="Texture" id=14]
+[ext_resource path="res://Animations/Flag/Purple/Flag1-1.png" type="Texture" id=15]
+[ext_resource path="res://Animations/Flag/Purple/Flag1-2.png" type="Texture" id=16]
+[ext_resource path="res://Animations/Flag/Purple/Flag1-3.png" type="Texture" id=17]
+[ext_resource path="res://Animations/Flag/Purple/Flag2.png" type="Texture" id=18]
+[ext_resource path="res://Animations/Flag/Green/Flag3.png" type="Texture" id=19]
+[ext_resource path="res://Animations/Flag/Green/Flag1-1.png" type="Texture" id=20]
+[ext_resource path="res://Animations/Flag/Green/Flag1-2.png" type="Texture" id=21]
+[ext_resource path="res://Animations/Flag/Green/Flag1-3.png" type="Texture" id=22]
+[ext_resource path="res://Animations/Flag/Blue/Flag3.png" type="Texture" id=23]
+[ext_resource path="res://Animations/Flag/Green/Flag2.png" type="Texture" id=24]
+[ext_resource path="res://Animations/Flag/Blue/Flag0.png" type="Texture" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -35,67 +43,67 @@ animations = [ {
 "name": "0-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": false,
 "name": "1-Blue",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": false,
 "name": "1-Red",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "3-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "2-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "2-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "3-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": false,
 "name": "1-Purple",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 18 ) ],
 "loop": true,
 "name": "2-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "3-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": false,
 "name": "1-Green",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 15 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": true,
 "name": "3-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "2-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ) ],
+"frames": [ ExtResource( 25 ) ],
 "loop": true,
 "name": "0-Blue",
 "speed": 5.0
