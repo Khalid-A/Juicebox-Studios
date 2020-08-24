@@ -51,7 +51,6 @@ var skin
 var color 
 
 # Sumo variables
-enum {LEFT, RIGHT}
 enum {GROUNDED, AIRBORNE, DOUBLE_JUMPING}
 enum {DASHING, DASHED, DASH_READY}
 enum {SLAMMING, NOT_SLAMMING, SLAMMED}
@@ -87,7 +86,7 @@ var sumo_state = [GROUNDED, DASH_READY, NOT_SLAMMING,
 
 # Sumo variables
 var velocity = Vector2()
-var dir = RIGHT
+var dir = Vector2.RIGHT
 var size
 var gravity = DOWN_GRAVITY
 var push_stun_timer = 0.0
@@ -224,10 +223,10 @@ func horizontal_movement(delta):
 	# Handle non-dash horizontal input.
 	if sumo_state[DASH] != DASHING:
 		if Input.is_action_pressed("ui_right%s" % id):
-			dir = RIGHT
+			dir = Vector2.RIGHT
 			move(delta)
 		elif Input.is_action_pressed("ui_left%s" % id):
-			dir = LEFT
+			dir = Vector2.LEFT
 			move(delta)
 		else:
 			idle(delta)
@@ -259,18 +258,17 @@ func vertical_movement(delta):
 	velocity.y += scale.y * gravity * delta
 	
 func move(delta):
-	var direction = 1 if dir == RIGHT else -1
-	
+
 	# Update x velocity depending on whether decelerating or accelerating.
-	if direction * velocity.x < 0:
-		velocity.x += (direction * SPEED - velocity.x) * delta / DECELERATION_TIME
+	if dir.x * velocity.x < 0:
+		velocity.x += (dir.x * SPEED - velocity.x) * delta / DECELERATION_TIME
 	else:
-		velocity.x += (direction * SPEED - velocity.x) * delta / ACCELERATION_TIME
+		velocity.x += (dir.x * SPEED - velocity.x) * delta / ACCELERATION_TIME
 	
 	# Update sprite to reflect movement.
 	if valid_trigger("walk"):
 		play_anim("Walk")
-	$SumoAnim.set_scale(Vector2(direction,1))
+	$SumoAnim.set_scale(Vector2(dir.x,1))
 
 # Halts the Sumo's x-axis movement and controls animation accordingly.
 func idle(delta):
@@ -288,11 +286,7 @@ func dash():
 	# Begin dash.
 	sumo_state[DASH] = DASHING
 	var dash_speed = DASH_DISTANCE / DASH_TIME
-	match dir:
-		LEFT:
-			velocity.x = -dash_speed
-		RIGHT:
-			velocity.x = dash_speed
+	velocity.x = dir.x * dash_speed
 	velocity.y = 0
 	
 	# Start DashTimer, which will stop dash once DASH_TIME has passed.
@@ -358,13 +352,11 @@ func push():
 
 	var push_speed = PUSH_DISTANCE / PUSH_TIME
 	match dir:
-		LEFT:
+		Vector2.LEFT:
 			$PushColliderLeft.set_disabled(false)
-			velocity.x += -push_speed
-			
-		RIGHT:
+		Vector2.RIGHT:
 			$PushColliderRight.set_disabled(false)
-			velocity.x += push_speed
+	velocity.x += dir.x * push_speed
 	velocity.y = 0
 
 # Perform a block.
@@ -381,10 +373,11 @@ func taunt():
 	$TauntTimer.start(TAUNTING_TIME)
 	
 	var taunt_area
-	if dir == LEFT:
-		taunt_area = $TauntAreaLeft
-	else:
-		taunt_area = $TauntAreaRight
+	match dir:
+		Vector2.LEFT:
+			taunt_area = $TauntAreaLeft
+		Vector2.RIGHT:
+			taunt_area = $TauntAreaRight
 	
 	# Taunt everything in the Area2D.
 	for body in taunt_area.get_overlapping_bodies():
@@ -441,9 +434,9 @@ func pushed(pusher_id, pusher_dir, pusher_velocity, pusher_size):
 	# Update status.
 	sumo_state[PUSH_STUN] = PUSH_STUNNED
 	
-	var new_dir = pusher_dir * Vector2(-1, 0) + Vector2(0, 1)
-	$SumoAnim.set_scale(new_dir)
-	dir = RIGHT if new_dir.x == 1 else LEFT
+	dir = pusher_dir * Vector2(-1, 0)
+	$SumoAnim.set_scale(Vector2(pusher_dir.x * -1, 1))
+
 	play_anim("PushStun")
 		
 	# Drop the sushi
@@ -503,8 +496,7 @@ func block_stun_loop():
 		# Get tossed in direction that blocker is facing.
 		sumo_state[TOSS] = TOSSED
 		var toss_power = TOSS_POWER / scale.y
-		var direction = 1 if dir == RIGHT else -1
-		velocity = move_and_slide(Vector2(direction,-1).normalized() * toss_power + blocker.velocity, FLOOR)
+		velocity = move_and_slide(Vector2(dir.x,-1).normalized() * toss_power + blocker.velocity, FLOOR)
 		return
 	
 	# Stay fixed to the blocker.
@@ -540,7 +532,7 @@ func object_collision(delta):
 			hold_sushi(object)
 			
 		elif sumo_state[PUSH] == PUSHING and object.has_method("pushed") and Global.sufficient_margin(object.last_hit, PUSH_TIME):
-			object.pushed(id, Vector2.RIGHT if dir == RIGHT else Vector2.LEFT, velocity, size)
+			object.pushed(id, dir, velocity, size)
 			velocity -= Global.collision_momentum(velocity, object.size, size)
 
 	Global.set_entity_mask_bits(self, ["Sushi", "Structures"], false)
@@ -556,7 +548,7 @@ func player_collision(delta):
 		var other = collision.collider
 		
 		if sumo_state[PUSH] == PUSHING and other.sumo_state[SLAM] == NOT_SLAMMING and Global.sufficient_margin(other.last_hit, PUSH_TIME):
-			other.pushed(id, Vector2.RIGHT if dir == RIGHT else Vector2.LEFT, velocity, size)
+			other.pushed(id, dir, velocity, size)
 			velocity -= Global.collision_momentum(velocity, other.size, size)
 		
 		# Other player dies.
@@ -637,8 +629,8 @@ func _on_EatTimer_timeout():
 func _on_TauntTimer_timeout():
 	sumo_state[TAUNT] = NOT_TAUNTING
 	
-func _on_SumoAnim_timeout():
-	pass
+#func _on_SumoAnim_timeout():
+#	pass
 	
 func update_calories():
 	get_parent().player_stats[id]['calories'] += get_parent().SUSHI_CALORIES
@@ -657,7 +649,7 @@ func update_calories():
 
 func synchronize(player):
 	var playerAnim = $SumoAnim
-	var flip_h = player.dir == LEFT
+	var flip_h = player.dir == Vector2.LEFT
 	var animation = playerAnim.get_animation()
 	var frame = playerAnim.get_frame()
 	$SumoAnim.set_flip_h(flip_h)

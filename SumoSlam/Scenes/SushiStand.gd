@@ -44,7 +44,7 @@ func init(p_id, p_name, p_pos):
 	self.position = p_pos
 	self.size = $StandCollider.get_shape().get_extents().y
 	self.state = READY
-	self.dir = -1
+	self.dir = Vector2.ZERO
 	self.hits = 0
 	self.last_hit = 0
 	self.destroyed = false
