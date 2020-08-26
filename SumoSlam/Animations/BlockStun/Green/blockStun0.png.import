@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sumo-blockstun0000-green.png.png-d7070f05549a4cbe57edf4ab0ed2c0e1.stex"
+path="res://.import/blockStun0.png-25cea2e55524d605c5c39800a20cab92.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/BlockStun/Purple/sumo-blockstun0000-green.png.png"
-dest_files=[ "res://.import/sumo-blockstun0000-green.png.png-d7070f05549a4cbe57edf4ab0ed2c0e1.stex" ]
+source_file="res://Animations/BlockStun/Green/blockStun0.png"
+dest_files=[ "res://.import/blockStun0.png-25cea2e55524d605c5c39800a20cab92.stex" ]
 
 [params]
 

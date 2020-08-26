@@ -258,7 +258,6 @@ func vertical_movement(delta):
 	velocity.y += scale.y * gravity * delta
 	
 func move(delta):
-
 	# Update x velocity depending on whether decelerating or accelerating.
 	if dir.x * velocity.x < 0:
 		velocity.x += (dir.x * SPEED - velocity.x) * delta / DECELERATION_TIME
@@ -495,6 +494,7 @@ func block_stun_loop():
 		
 		# Get tossed in direction that blocker is facing.
 		sumo_state[TOSS] = TOSSED
+		play_anim("Stun")
 		var toss_power = TOSS_POWER / scale.y
 		velocity = move_and_slide(Vector2(dir.x,-1).normalized() * toss_power + blocker.velocity, FLOOR)
 		return
@@ -629,8 +629,8 @@ func _on_EatTimer_timeout():
 func _on_TauntTimer_timeout():
 	sumo_state[TAUNT] = NOT_TAUNTING
 	
-#func _on_SumoAnim_timeout():
-#	pass
+func _on_SumoAnim_timeout():
+	pass
 	
 func update_calories():
 	get_parent().player_stats[id]['calories'] += get_parent().SUSHI_CALORIES
@@ -669,7 +669,7 @@ func play_anim(action):
 		"Idle", "Walk", "Jump", "Fall", "Slam", "Push", "Taunt", "Dash":
 			extension = sushi_anim + skin
 			
-		"Eating", "Block", "TauntStun", "BlockStun", "PushStun", "Death", "SlamImpact":
+		"Eating", "Block", "TauntStun", "BlockStun", "PushStun", "Stun", "Death", "SlamImpact":
 			extension = skin
 			
 	$SumoAnim.play(action + extension)
