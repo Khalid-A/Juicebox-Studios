@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Sushi.gd" type="Script" id=1]
-[ext_resource path="res://Animations/Sushi/Sushi2_0.png" type="Texture" id=2]
-[ext_resource path="res://Animations/Sushi/Sushi3_0.png" type="Texture" id=3]
-[ext_resource path="res://Animations/Sushi/Sushi0_0.png" type="Texture" id=4]
-[ext_resource path="res://Animations/Sushi/Sushi4_0.png" type="Texture" id=5]
-[ext_resource path="res://Animations/Sushi/Sushi1_0.png" type="Texture" id=6]
+[ext_resource path="res://Animations/Sushi/Sushi1_0.png" type="Texture" id=2]
+[ext_resource path="res://Animations/Sushi/Sushi0_0.png" type="Texture" id=3]
+[ext_resource path="res://Animations/Sushi/Sushi4_0.png" type="Texture" id=4]
+[ext_resource path="res://Animations/Sushi/Sushi2_0.png" type="Texture" id=5]
+[ext_resource path="res://Animations/Sushi/Sushi3_0.png" type="Texture" id=6]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.5
@@ -18,27 +18,27 @@ extents = Vector2( 4.5, 4.5 )
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Sushi2",
+"name": "Sushi1",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "Sushi3",
+"name": "Sushi0",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "Sushi0",
+"name": "Sushi4",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "Sushi4",
+"name": "Sushi2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "Sushi1",
+"name": "Sushi3",
 "speed": 5.0
 } ]
 
@@ -52,7 +52,7 @@ script = ExtResource( 1 )
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="Anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "Sushi4"
 playing = true

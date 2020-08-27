@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Entity
 
 const SCREENWRAP_NODE = preload("res://Scenes/ScreenWrapNode.tscn")
 
@@ -45,11 +45,6 @@ const MAX_SCALE_UP = 0.5
 
 const FLOOR = Vector2(0, -1)
 
-# Sumo identifiers
-var id
-var skin
-var color 
-
 # Sumo variables
 enum {GROUNDED, AIRBORNE, DOUBLE_JUMPING}
 enum {DASHING, DASHED, DASH_READY}
@@ -85,51 +80,30 @@ var sumo_state = [GROUNDED, DASH_READY, NOT_SLAMMING,
 					ALIVE]
 
 # Sumo variables
-var velocity = Vector2()
-var dir = Vector2.RIGHT
-var size
 var gravity = DOWN_GRAVITY
 var push_stun_timer = 0.0
 var taunt_stun_timer = 0.0
 var blocker = null
-var last_hit
 var sushi = null
 var sushi_anim = ""
 
 export (bool) var isOriginal = false
 
 func _ready():
-	var error = self.connect('death', get_tree().get_root().get_node('Game'), '_on_player_death')
-	if error: print('Player death signal error: %s' % error)
 	if isOriginal:
 		var wrap = SCREENWRAP_NODE.instance()
 		wrap.instancePath = "res://Scenes//Player.tscn"
 		add_child(wrap)
 	else:
 		set_physics_process(false)
-		
-func is_class(_class): 
-	return _class == "Player"
-
-func get_class(): 
-	return "Player"
 	
 func init(p_id, p_name, p_pos, p_skin, p_color):
-	self.id = p_id
-	self.name = p_name
-	self.position = p_pos
-	self.size = $CapsuleCollider.get_shape().radius
-	self.skin = p_skin
-	self.color = p_color
-	self.last_hit = 0
+	entity_init("Player", p_id, p_name, p_pos, p_skin, p_color, $CapsuleCollider.get_shape().radius)
 	self.isOriginal = true
 	play_anim("Idle")
 
 # Controls physics processes for the Sumo.
 func _physics_process(delta):
-	
-	# Simple wraparound. TODO: remove later.
-	self.global_position.x = wrapf(self.global_position.x, 0, get_viewport_rect().size.x)
 	
 	# Only perform actions if the Sumo isn't in the process of dying
 	if sumo_state[LIFE] == ALIVE:
@@ -521,7 +495,7 @@ func taunt_stun_loop(delta):
 	
 func object_collision(delta):
 	
-	Global.set_entity_mask_bits(self, ["Sushi", "Structures"], true)
+	Global.set_entity_mask_bits(self, ["Items", "Structures"], true)
 	
 	# Check for collisions
 	var collision = move_and_collide(velocity * delta, false, true, true)
@@ -531,11 +505,11 @@ func object_collision(delta):
 		if object.is_class("Sushi") and valid_trigger("grab_sushi"):
 			hold_sushi(object)
 			
-		elif sumo_state[PUSH] == PUSHING and object.has_method("pushed") and Global.sufficient_margin(object.last_hit, PUSH_TIME):
+		elif sumo_state[PUSH] == PUSHING and object.has_method("pushed"):
 			object.pushed(id, dir, velocity, size)
 			velocity -= Global.collision_momentum(velocity, object.size, size)
 
-	Global.set_entity_mask_bits(self, ["Sushi", "Structures"], false)
+	Global.set_entity_mask_bits(self, ["Items", "Structures"], false)
 
 # Check for player collisions.
 func player_collision(delta):
@@ -544,10 +518,10 @@ func player_collision(delta):
 	
 	# Check for collisions
 	var collision = move_and_collide(velocity * delta, true, true, true)
-	if collision and collision.collider.is_class("Player") and collision.collider.blocker != self:
+	if collision and collision.collider.is_class(self._class) and collision.collider.blocker != self:
 		var other = collision.collider
 		
-		if sumo_state[PUSH] == PUSHING and other.sumo_state[SLAM] == NOT_SLAMMING and Global.sufficient_margin(other.last_hit, PUSH_TIME):
+		if sumo_state[PUSH] == PUSHING and other.sumo_state[SLAM] == NOT_SLAMMING:
 			other.pushed(id, dir, velocity, size)
 			velocity -= Global.collision_momentum(velocity, other.size, size)
 		
