@@ -26,6 +26,10 @@ func item_init(i_class, i_pos, i_state, i_size, i_collider):
 #func _ready():
 #	pass
 
+func set_collidable(value):
+	if curr_collider:
+		curr_collider.set_disabled(!value)
+
 func _physics_process(__):
 	if self.global_position.x > get_viewport_rect().size.x or self.global_position.x < 0:
 		self.global_position.x = wrapf(self.global_position.x, 0, get_viewport_rect().size.x)

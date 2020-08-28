@@ -1,4 +1,4 @@
-[gd_scene load_steps=267 format=2]
+[gd_scene load_steps=271 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Animations/TauntStun/red/sumo-taunted0000.png" type="Texture" id=2]
@@ -49,8 +49,8 @@
 [ext_resource path="res://Animations/SushiAnimations/walk/Blue/blue-sushi-sumo-walk0005.png" type="Texture" id=47]
 [ext_resource path="res://Animations/SushiAnimations/jump/Red/red-sushi-sumo-jump0000.png" type="Texture" id=48]
 [ext_resource path="res://Animations/SushiAnimations/jump/Red/red-sushi-sumo-jump0001.png" type="Texture" id=49]
-[ext_resource path="res://Animations/Jump/Purple/sumo-jump-fall-impact0001-purple.png.png" type="Texture" id=50]
-[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0001-blue.png" type="Texture" id=51]
+[ext_resource path="res://Animations/Block/Purple/Block_01.png" type="Texture" id=50]
+[ext_resource path="res://Animations/Block/Blue/Block_01.png" type="Texture" id=51]
 [ext_resource path="res://Animations/BlockStun/Purple/sumo-blockstun0000-purple1.png" type="Texture" id=52]
 [ext_resource path="res://Animations/BlockStun/Purple/sumo-blockstun0000-purple2.png" type="Texture" id=53]
 [ext_resource path="res://Animations/SushiAnimations/jump/Green/green-sushi-sumo-jump0001.png" type="Texture" id=54]
@@ -100,167 +100,171 @@
 [ext_resource path="res://Animations/SushiAnimations/dash/Blue/blue-sushi-sumo-dash0004.png" type="Texture" id=98]
 [ext_resource path="res://Animations/Idle/Blue/sumo-idle0000-blue.png" type="Texture" id=99]
 [ext_resource path="res://Animations/Idle/Blue/sumo-idle0001-blue.png" type="Texture" id=100]
-[ext_resource path="res://Animations/Stun/Red/sumo-stun0000.png" type="Texture" id=101]
-[ext_resource path="res://Animations/Stun/Red/sumo-stun0001.png" type="Texture" id=102]
-[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0002.png" type="Texture" id=103]
-[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0003.png" type="Texture" id=104]
-[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0004.png" type="Texture" id=105]
-[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0005.png" type="Texture" id=106]
-[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0002-blue.png" type="Texture" id=107]
-[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0003-blue.png" type="Texture" id=108]
-[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0004-blue.png" type="Texture" id=109]
-[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0005-blue.png" type="Texture" id=110]
-[ext_resource path="res://Animations/SushiAnimations/jump/Blue/blue-sushi-sumo-jump0000.png" type="Texture" id=111]
-[ext_resource path="res://Animations/Death/Green/green-sumo-death0000.png" type="Texture" id=112]
-[ext_resource path="res://Animations/Death/Green/green-sumo-death0001.png" type="Texture" id=113]
-[ext_resource path="res://Animations/Death/Green/green-sumo-death0002.png" type="Texture" id=114]
-[ext_resource path="res://Animations/Death/Green/green-sumo-death0003.png" type="Texture" id=115]
-[ext_resource path="res://Animations/Death/Green/green-sumo-death0004.png" type="Texture" id=116]
-[ext_resource path="res://Animations/Death/Green/green-sumo-death0005.png" type="Texture" id=117]
-[ext_resource path="res://Animations/Slam/Purple/sumo-slam0000-purple.png.png" type="Texture" id=118]
-[ext_resource path="res://Animations/Walk/Green/sumo-walk0000-green.png.png" type="Texture" id=119]
-[ext_resource path="res://Animations/Walk/Green/sumo-walk0001-green.png.png" type="Texture" id=120]
-[ext_resource path="res://Animations/Walk/Green/sumo-walk0002-green.png.png" type="Texture" id=121]
-[ext_resource path="res://Animations/Walk/Green/sumo-walk0003-green.png.png" type="Texture" id=122]
-[ext_resource path="res://Animations/Walk/Green/sumo-walk0004-green.png.png" type="Texture" id=123]
-[ext_resource path="res://Animations/Walk/Green/sumo-walk0005-green.png.png" type="Texture" id=124]
-[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0005.png" type="Texture" id=125]
-[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0006.png" type="Texture" id=126]
-[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0000.png" type="Texture" id=127]
-[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0001.png" type="Texture" id=128]
-[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0002.png" type="Texture" id=129]
-[ext_resource path="res://Animations/SushiAnimations/idle/Red/sushi-idle_00000.png" type="Texture" id=130]
-[ext_resource path="res://Animations/SushiAnimations/idle/Red/sushi-idle_00001.png" type="Texture" id=131]
-[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0005.png" type="Texture" id=132]
-[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0006.png" type="Texture" id=133]
-[ext_resource path="res://Animations/Taunt/red/sumo_taunt0000.png" type="Texture" id=134]
-[ext_resource path="res://Animations/Taunt/red/sumo_taunt0001.png" type="Texture" id=135]
-[ext_resource path="res://Animations/SushiAnimations/jump/Blue/blue-sushi-sumo-jump0001.png" type="Texture" id=136]
-[ext_resource path="res://Animations/Slam/Green/sumo-slam0000-green.png.png" type="Texture" id=137]
-[ext_resource path="res://Animations/Push/Red/Push_00000.png" type="Texture" id=138]
-[ext_resource path="res://Animations/Push/Red/Push_00001.png" type="Texture" id=139]
-[ext_resource path="res://Animations/Push/Red/Push_00002.png" type="Texture" id=140]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0001.png" type="Texture" id=141]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0002.png" type="Texture" id=142]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0003.png" type="Texture" id=143]
-[ext_resource path="res://Animations/Slam/Red/sumo-slam0004.png" type="Texture" id=144]
-[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0000.png" type="Texture" id=145]
-[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0001.png" type="Texture" id=146]
-[ext_resource path="res://Animations/SushiAnimations/slam/Blue/blue-sushu-sumo-slam0000.png" type="Texture" id=147]
-[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0003.png" type="Texture" id=148]
-[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0004.png" type="Texture" id=149]
-[ext_resource path="res://Animations/Push/Purple/Push_00000.png" type="Texture" id=150]
-[ext_resource path="res://Animations/Push/Purple/Push_00001.png" type="Texture" id=151]
-[ext_resource path="res://Animations/Push/Purple/Push_00002.png" type="Texture" id=152]
-[ext_resource path="res://Animations/Push/Blue/Push_00000.png" type="Texture" id=153]
-[ext_resource path="res://Animations/Push/Blue/Push_00001.png" type="Texture" id=154]
-[ext_resource path="res://Animations/Push/Blue/Push_00002.png" type="Texture" id=155]
-[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00000.png" type="Texture" id=156]
-[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00001.png" type="Texture" id=157]
-[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00002.png" type="Texture" id=158]
-[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00000.png" type="Texture" id=159]
-[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00001.png" type="Texture" id=160]
-[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00002.png" type="Texture" id=161]
-[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00000.png" type="Texture" id=162]
-[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00001.png" type="Texture" id=163]
-[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00002.png" type="Texture" id=164]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0000.png" type="Texture" id=165]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0001.png" type="Texture" id=166]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0002.png" type="Texture" id=167]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0003.png" type="Texture" id=168]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0004.png" type="Texture" id=169]
-[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0005.png" type="Texture" id=170]
-[ext_resource path="res://Animations/PushStun/Green/stun0.png" type="Texture" id=171]
-[ext_resource path="res://Animations/PushStun/Green/stun1.png" type="Texture" id=172]
-[ext_resource path="res://Animations/PushStun/Green/stun2.png" type="Texture" id=173]
-[ext_resource path="res://Animations/PushStun/Green/stun3.png" type="Texture" id=174]
-[ext_resource path="res://Animations/PushStun/Green/stun4.png" type="Texture" id=175]
-[ext_resource path="res://Animations/PushStun/Red/stun0.png" type="Texture" id=176]
-[ext_resource path="res://Animations/PushStun/Red/stun1.png" type="Texture" id=177]
-[ext_resource path="res://Animations/PushStun/Red/stun2.png" type="Texture" id=178]
-[ext_resource path="res://Animations/PushStun/Red/stun3.png" type="Texture" id=179]
-[ext_resource path="res://Animations/PushStun/Red/stun4.png" type="Texture" id=180]
-[ext_resource path="res://Animations/PushStun/Purple/stun0.png" type="Texture" id=181]
-[ext_resource path="res://Animations/PushStun/Purple/stun1.png" type="Texture" id=182]
-[ext_resource path="res://Animations/PushStun/Purple/stun2.png" type="Texture" id=183]
-[ext_resource path="res://Animations/PushStun/Purple/stun3.png" type="Texture" id=184]
-[ext_resource path="res://Animations/PushStun/Purple/stun4.png" type="Texture" id=185]
-[ext_resource path="res://Animations/PushStun/Blue/stun0.png" type="Texture" id=186]
-[ext_resource path="res://Animations/PushStun/Blue/stun1.png" type="Texture" id=187]
-[ext_resource path="res://Animations/PushStun/Blue/stun2.png" type="Texture" id=188]
-[ext_resource path="res://Animations/PushStun/Blue/stun3.png" type="Texture" id=189]
-[ext_resource path="res://Animations/PushStun/Blue/stun4.png" type="Texture" id=190]
-[ext_resource path="res://Animations/Idle/Red/sumo-idle0000.png" type="Texture" id=191]
-[ext_resource path="res://Animations/Idle/Red/sumo-idle0001.png" type="Texture" id=192]
-[ext_resource path="res://Animations/SushiAnimations/idle/Blue/sushi-idle_00000.png" type="Texture" id=193]
-[ext_resource path="res://Animations/SushiAnimations/idle/Blue/sushi-idle_00001.png" type="Texture" id=194]
-[ext_resource path="res://Animations/Eating/Red/Eating_00001.png" type="Texture" id=195]
-[ext_resource path="res://Animations/Eating/Red/Eating_00002.png" type="Texture" id=196]
-[ext_resource path="res://Animations/Eating/Purple/Eating_00001.png" type="Texture" id=197]
-[ext_resource path="res://Animations/Eating/Purple/Eating_00002.png" type="Texture" id=198]
-[ext_resource path="res://Animations/SushiAnimations/idle/Green/sushi-idle_00000.png" type="Texture" id=199]
-[ext_resource path="res://Animations/SushiAnimations/idle/Green/sushi-idle_00001.png" type="Texture" id=200]
-[ext_resource path="res://Animations/SushiAnimations/slam/Purple/purple-sushi-sumo-slam0000.png" type="Texture" id=201]
-[ext_resource path="res://Animations/SushiAnimations/push/Green/Push_00000.png" type="Texture" id=202]
-[ext_resource path="res://Animations/SushiAnimations/push/Green/Push_00001.png" type="Texture" id=203]
-[ext_resource path="res://Animations/SushiAnimations/push/Green/Push_00002.png" type="Texture" id=204]
-[ext_resource path="res://Animations/SushiAnimations/idle/Purple/sushi-idle_00000.png" type="Texture" id=205]
-[ext_resource path="res://Animations/SushiAnimations/idle/Purple/sushi-idle_00001.png" type="Texture" id=206]
-[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0003.png" type="Texture" id=207]
-[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0004.png" type="Texture" id=208]
-[ext_resource path="res://Animations/Slam/Green/sumo-slam0001-green.png.png" type="Texture" id=209]
-[ext_resource path="res://Animations/Slam/Green/sumo-slam0002-green.png.png" type="Texture" id=210]
-[ext_resource path="res://Animations/Slam/Green/sumo-slam0003-green.png.png" type="Texture" id=211]
-[ext_resource path="res://Animations/Slam/Green/sumo-slam0004-green.png.png" type="Texture" id=212]
-[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0000.png" type="Texture" id=213]
-[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0001.png" type="Texture" id=214]
-[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0002.png" type="Texture" id=215]
-[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0003.png" type="Texture" id=216]
-[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0004.png" type="Texture" id=217]
-[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0005.png" type="Texture" id=218]
-[ext_resource path="res://Animations/SushiAnimations/slam/Red/red-sushi-sumo-slam0000.png" type="Texture" id=219]
-[ext_resource path="res://Animations/SushiAnimations/jump/Purple/purple-sushi-sumo-jump0001.png" type="Texture" id=220]
-[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0003.png" type="Texture" id=221]
-[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0004.png" type="Texture" id=222]
-[ext_resource path="res://Animations/Stun/Purple/sumo-stun0000-purple.png.png" type="Texture" id=223]
-[ext_resource path="res://Animations/Stun/Purple/sumo-stun0001-purple.png" type="Texture" id=224]
-[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0000.png" type="Texture" id=225]
-[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0001.png" type="Texture" id=226]
-[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0002.png" type="Texture" id=227]
-[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0003.png" type="Texture" id=228]
-[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0004.png" type="Texture" id=229]
-[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0005.png" type="Texture" id=230]
-[ext_resource path="res://Animations/SushiAnimations/slam/Green/green-sushi-sumo-slam0000.png" type="Texture" id=231]
-[ext_resource path="res://Animations/Eating/Blue/Eating_00001.png" type="Texture" id=232]
-[ext_resource path="res://Animations/Eating/Blue/Eating_00002.png" type="Texture" id=233]
-[ext_resource path="res://Animations/SushiAnimations/taunt/blue/sushi-sumo-taunt0000.png" type="Texture" id=234]
-[ext_resource path="res://Animations/SushiAnimations/taunt/blue/sushi-sumo-taunt0001.png" type="Texture" id=235]
-[ext_resource path="res://Animations/Dash/Blue/blue-sumo-dash0000.png" type="Texture" id=236]
-[ext_resource path="res://Animations/Dash/Blue/blue-sumo-dash0001.png" type="Texture" id=237]
-[ext_resource path="res://Animations/Dash/Blue/blue-sumo-dash0002.png" type="Texture" id=238]
-[ext_resource path="res://Animations/Jump/Purple/sumo-jump-fall-impact0000-purple.png.png" type="Texture" id=239]
-[ext_resource path="res://Animations/SushiAnimations/dash/Purple/purple-sushi-sumo-dash0003.png" type="Texture" id=240]
-[ext_resource path="res://Animations/SushiAnimations/dash/Purple/purple-sushi-sumo-dash0004.png" type="Texture" id=241]
-[ext_resource path="res://Animations/TauntStun/blue/sumo-taunted0000.png" type="Texture" id=242]
-[ext_resource path="res://Animations/Push/Green/Push_00000.png" type="Texture" id=243]
-[ext_resource path="res://Animations/Push/Green/Push_00001.png" type="Texture" id=244]
-[ext_resource path="res://Animations/Push/Green/Push_00002.png" type="Texture" id=245]
-[ext_resource path="res://Animations/Taunt/purple/sumo_taunt0000.png" type="Texture" id=246]
-[ext_resource path="res://Animations/Taunt/purple/sumo_taunt0001.png" type="Texture" id=247]
-[ext_resource path="res://Animations/SushiAnimations/taunt/purple/sushi-sumo-taunt0000.png" type="Texture" id=248]
-[ext_resource path="res://Animations/SushiAnimations/taunt/purple/sushi-sumo-taunt0001.png" type="Texture" id=249]
-[ext_resource path="res://Animations/TauntStun/green/sumo-taunted0000.png" type="Texture" id=250]
-[ext_resource path="res://Animations/SushiAnimations/taunt/green/sushi-sumo-taunt0000.png" type="Texture" id=251]
-[ext_resource path="res://Animations/SushiAnimations/taunt/green/sushi-sumo-taunt0001.png" type="Texture" id=252]
-[ext_resource path="res://Animations/Taunt/blue/sumo_taunt0000.png" type="Texture" id=253]
-[ext_resource path="res://Animations/Taunt/blue/sumo_taunt0001.png" type="Texture" id=254]
-[ext_resource path="res://Animations/Taunt/green/sumo_taunt0000.png" type="Texture" id=255]
-[ext_resource path="res://Animations/Taunt/green/sumo_taunt0001.png" type="Texture" id=256]
-[ext_resource path="res://Animations/BlockStun/Red/sumo-slam0000.png" type="Texture" id=257]
-[ext_resource path="res://Animations/BlockStun/Red/sumo-slam0001.png" type="Texture" id=258]
-[ext_resource path="res://Animations/Idle/Green/sumo-idle0000-green.png.png" type="Texture" id=259]
-[ext_resource path="res://Animations/Idle/Green/sumo-idle0001-green.png.png" type="Texture" id=260]
-[ext_resource path="res://Animations/SushiAnimations/jump/Green/green-sushi-sumo-jump0000.png" type="Texture" id=261]
+[ext_resource path="res://Animations/Block/Green/Block_01.png" type="Texture" id=101]
+[ext_resource path="res://Animations/Stun/Red/sumo-stun0000.png" type="Texture" id=102]
+[ext_resource path="res://Animations/Stun/Red/sumo-stun0001.png" type="Texture" id=103]
+[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0002.png" type="Texture" id=104]
+[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0003.png" type="Texture" id=105]
+[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0004.png" type="Texture" id=106]
+[ext_resource path="res://Animations/Jump/Red/sumo-jump-fall-impact0005.png" type="Texture" id=107]
+[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0002-blue.png" type="Texture" id=108]
+[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0003-blue.png" type="Texture" id=109]
+[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0004-blue.png" type="Texture" id=110]
+[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0005-blue.png" type="Texture" id=111]
+[ext_resource path="res://Animations/SushiAnimations/jump/Blue/blue-sushi-sumo-jump0000.png" type="Texture" id=112]
+[ext_resource path="res://Animations/Death/Green/green-sumo-death0000.png" type="Texture" id=113]
+[ext_resource path="res://Animations/Death/Green/green-sumo-death0001.png" type="Texture" id=114]
+[ext_resource path="res://Animations/Death/Green/green-sumo-death0002.png" type="Texture" id=115]
+[ext_resource path="res://Animations/Death/Green/green-sumo-death0003.png" type="Texture" id=116]
+[ext_resource path="res://Animations/Death/Green/green-sumo-death0004.png" type="Texture" id=117]
+[ext_resource path="res://Animations/Death/Green/green-sumo-death0005.png" type="Texture" id=118]
+[ext_resource path="res://Animations/Slam/Purple/sumo-slam0000-purple.png.png" type="Texture" id=119]
+[ext_resource path="res://Animations/Walk/Green/sumo-walk0000-green.png.png" type="Texture" id=120]
+[ext_resource path="res://Animations/Walk/Green/sumo-walk0001-green.png.png" type="Texture" id=121]
+[ext_resource path="res://Animations/Walk/Green/sumo-walk0002-green.png.png" type="Texture" id=122]
+[ext_resource path="res://Animations/Walk/Green/sumo-walk0003-green.png.png" type="Texture" id=123]
+[ext_resource path="res://Animations/Walk/Green/sumo-walk0004-green.png.png" type="Texture" id=124]
+[ext_resource path="res://Animations/Walk/Green/sumo-walk0005-green.png.png" type="Texture" id=125]
+[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0005.png" type="Texture" id=126]
+[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0006.png" type="Texture" id=127]
+[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0000.png" type="Texture" id=128]
+[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0001.png" type="Texture" id=129]
+[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0002.png" type="Texture" id=130]
+[ext_resource path="res://Animations/SushiAnimations/idle/Red/sushi-idle_00000.png" type="Texture" id=131]
+[ext_resource path="res://Animations/SushiAnimations/idle/Red/sushi-idle_00001.png" type="Texture" id=132]
+[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0005.png" type="Texture" id=133]
+[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0006.png" type="Texture" id=134]
+[ext_resource path="res://Animations/Taunt/red/sumo_taunt0000.png" type="Texture" id=135]
+[ext_resource path="res://Animations/Taunt/red/sumo_taunt0001.png" type="Texture" id=136]
+[ext_resource path="res://Animations/SushiAnimations/jump/Blue/blue-sushi-sumo-jump0001.png" type="Texture" id=137]
+[ext_resource path="res://Animations/Block/Red/Block_01.png" type="Texture" id=138]
+[ext_resource path="res://Animations/Slam/Green/sumo-slam0000-green.png.png" type="Texture" id=139]
+[ext_resource path="res://Animations/Jump/Purple/sumo-jump-fall-impact0001-purple.png.png" type="Texture" id=140]
+[ext_resource path="res://Animations/Push/Red/Push_00000.png" type="Texture" id=141]
+[ext_resource path="res://Animations/Push/Red/Push_00001.png" type="Texture" id=142]
+[ext_resource path="res://Animations/Push/Red/Push_00002.png" type="Texture" id=143]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0001.png" type="Texture" id=144]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0002.png" type="Texture" id=145]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0003.png" type="Texture" id=146]
+[ext_resource path="res://Animations/Slam/Red/sumo-slam0004.png" type="Texture" id=147]
+[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0000.png" type="Texture" id=148]
+[ext_resource path="res://Animations/SushiAnimations/taunt/red/sushi-sumo-taunt0001.png" type="Texture" id=149]
+[ext_resource path="res://Animations/SushiAnimations/slam/Blue/blue-sushu-sumo-slam0000.png" type="Texture" id=150]
+[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0003.png" type="Texture" id=151]
+[ext_resource path="res://Animations/SushiAnimations/dash/Green/green-sushi-sumo-dash0004.png" type="Texture" id=152]
+[ext_resource path="res://Animations/Push/Purple/Push_00000.png" type="Texture" id=153]
+[ext_resource path="res://Animations/Push/Purple/Push_00001.png" type="Texture" id=154]
+[ext_resource path="res://Animations/Push/Purple/Push_00002.png" type="Texture" id=155]
+[ext_resource path="res://Animations/Push/Blue/Push_00000.png" type="Texture" id=156]
+[ext_resource path="res://Animations/Push/Blue/Push_00001.png" type="Texture" id=157]
+[ext_resource path="res://Animations/Push/Blue/Push_00002.png" type="Texture" id=158]
+[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00000.png" type="Texture" id=159]
+[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00001.png" type="Texture" id=160]
+[ext_resource path="res://Animations/SushiAnimations/push/Purple/Push_00002.png" type="Texture" id=161]
+[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00000.png" type="Texture" id=162]
+[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00001.png" type="Texture" id=163]
+[ext_resource path="res://Animations/SushiAnimations/push/Blue/Push_00002.png" type="Texture" id=164]
+[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00000.png" type="Texture" id=165]
+[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00001.png" type="Texture" id=166]
+[ext_resource path="res://Animations/SushiAnimations/push/Red/Push_00002.png" type="Texture" id=167]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0000.png" type="Texture" id=168]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0001.png" type="Texture" id=169]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0002.png" type="Texture" id=170]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0003.png" type="Texture" id=171]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0004.png" type="Texture" id=172]
+[ext_resource path="res://Animations/SushiAnimations/walk/Red/red-sushi-sumo-walk0005.png" type="Texture" id=173]
+[ext_resource path="res://Animations/PushStun/Green/stun0.png" type="Texture" id=174]
+[ext_resource path="res://Animations/PushStun/Green/stun1.png" type="Texture" id=175]
+[ext_resource path="res://Animations/PushStun/Green/stun2.png" type="Texture" id=176]
+[ext_resource path="res://Animations/PushStun/Green/stun3.png" type="Texture" id=177]
+[ext_resource path="res://Animations/PushStun/Green/stun4.png" type="Texture" id=178]
+[ext_resource path="res://Animations/PushStun/Red/stun0.png" type="Texture" id=179]
+[ext_resource path="res://Animations/PushStun/Red/stun1.png" type="Texture" id=180]
+[ext_resource path="res://Animations/PushStun/Red/stun2.png" type="Texture" id=181]
+[ext_resource path="res://Animations/PushStun/Red/stun3.png" type="Texture" id=182]
+[ext_resource path="res://Animations/PushStun/Red/stun4.png" type="Texture" id=183]
+[ext_resource path="res://Animations/PushStun/Purple/stun0.png" type="Texture" id=184]
+[ext_resource path="res://Animations/PushStun/Purple/stun1.png" type="Texture" id=185]
+[ext_resource path="res://Animations/PushStun/Purple/stun2.png" type="Texture" id=186]
+[ext_resource path="res://Animations/PushStun/Purple/stun3.png" type="Texture" id=187]
+[ext_resource path="res://Animations/PushStun/Purple/stun4.png" type="Texture" id=188]
+[ext_resource path="res://Animations/PushStun/Blue/stun0.png" type="Texture" id=189]
+[ext_resource path="res://Animations/PushStun/Blue/stun1.png" type="Texture" id=190]
+[ext_resource path="res://Animations/PushStun/Blue/stun2.png" type="Texture" id=191]
+[ext_resource path="res://Animations/PushStun/Blue/stun3.png" type="Texture" id=192]
+[ext_resource path="res://Animations/PushStun/Blue/stun4.png" type="Texture" id=193]
+[ext_resource path="res://Animations/Idle/Red/sumo-idle0000.png" type="Texture" id=194]
+[ext_resource path="res://Animations/Idle/Red/sumo-idle0001.png" type="Texture" id=195]
+[ext_resource path="res://Animations/SushiAnimations/idle/Blue/sushi-idle_00000.png" type="Texture" id=196]
+[ext_resource path="res://Animations/SushiAnimations/idle/Blue/sushi-idle_00001.png" type="Texture" id=197]
+[ext_resource path="res://Animations/Eating/Red/Eating_00001.png" type="Texture" id=198]
+[ext_resource path="res://Animations/Eating/Red/Eating_00002.png" type="Texture" id=199]
+[ext_resource path="res://Animations/Jump/Blue/sumo-jump-fall-impact0001-blue.png" type="Texture" id=200]
+[ext_resource path="res://Animations/Eating/Purple/Eating_00001.png" type="Texture" id=201]
+[ext_resource path="res://Animations/Eating/Purple/Eating_00002.png" type="Texture" id=202]
+[ext_resource path="res://Animations/SushiAnimations/idle/Green/sushi-idle_00000.png" type="Texture" id=203]
+[ext_resource path="res://Animations/SushiAnimations/idle/Green/sushi-idle_00001.png" type="Texture" id=204]
+[ext_resource path="res://Animations/SushiAnimations/slam/Purple/purple-sushi-sumo-slam0000.png" type="Texture" id=205]
+[ext_resource path="res://Animations/SushiAnimations/push/Green/Push_00000.png" type="Texture" id=206]
+[ext_resource path="res://Animations/SushiAnimations/push/Green/Push_00001.png" type="Texture" id=207]
+[ext_resource path="res://Animations/SushiAnimations/push/Green/Push_00002.png" type="Texture" id=208]
+[ext_resource path="res://Animations/SushiAnimations/idle/Purple/sushi-idle_00000.png" type="Texture" id=209]
+[ext_resource path="res://Animations/SushiAnimations/idle/Purple/sushi-idle_00001.png" type="Texture" id=210]
+[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0003.png" type="Texture" id=211]
+[ext_resource path="res://Animations/Dash/Purple/purple-sumo-dash0004.png" type="Texture" id=212]
+[ext_resource path="res://Animations/Slam/Green/sumo-slam0001-green.png.png" type="Texture" id=213]
+[ext_resource path="res://Animations/Slam/Green/sumo-slam0002-green.png.png" type="Texture" id=214]
+[ext_resource path="res://Animations/Slam/Green/sumo-slam0003-green.png.png" type="Texture" id=215]
+[ext_resource path="res://Animations/Slam/Green/sumo-slam0004-green.png.png" type="Texture" id=216]
+[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0000.png" type="Texture" id=217]
+[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0001.png" type="Texture" id=218]
+[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0002.png" type="Texture" id=219]
+[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0003.png" type="Texture" id=220]
+[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0004.png" type="Texture" id=221]
+[ext_resource path="res://Animations/SushiAnimations/walk/Purple/purple-sushi-sumo-walk0005.png" type="Texture" id=222]
+[ext_resource path="res://Animations/SushiAnimations/slam/Red/red-sushi-sumo-slam0000.png" type="Texture" id=223]
+[ext_resource path="res://Animations/SushiAnimations/jump/Purple/purple-sushi-sumo-jump0001.png" type="Texture" id=224]
+[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0003.png" type="Texture" id=225]
+[ext_resource path="res://Animations/Dash/Green/green-sumo-dash0004.png" type="Texture" id=226]
+[ext_resource path="res://Animations/Stun/Purple/sumo-stun0000-purple.png.png" type="Texture" id=227]
+[ext_resource path="res://Animations/Stun/Purple/sumo-stun0001-purple.png" type="Texture" id=228]
+[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0000.png" type="Texture" id=229]
+[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0001.png" type="Texture" id=230]
+[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0002.png" type="Texture" id=231]
+[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0003.png" type="Texture" id=232]
+[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0004.png" type="Texture" id=233]
+[ext_resource path="res://Animations/SushiAnimations/walk/Green/green-sushi-sumo-walk0005.png" type="Texture" id=234]
+[ext_resource path="res://Animations/SushiAnimations/slam/Green/green-sushi-sumo-slam0000.png" type="Texture" id=235]
+[ext_resource path="res://Animations/Eating/Blue/Eating_00001.png" type="Texture" id=236]
+[ext_resource path="res://Animations/Eating/Blue/Eating_00002.png" type="Texture" id=237]
+[ext_resource path="res://Animations/SushiAnimations/taunt/blue/sushi-sumo-taunt0000.png" type="Texture" id=238]
+[ext_resource path="res://Animations/SushiAnimations/taunt/blue/sushi-sumo-taunt0001.png" type="Texture" id=239]
+[ext_resource path="res://Animations/Dash/Blue/blue-sumo-dash0000.png" type="Texture" id=240]
+[ext_resource path="res://Animations/Dash/Blue/blue-sumo-dash0001.png" type="Texture" id=241]
+[ext_resource path="res://Animations/Dash/Blue/blue-sumo-dash0002.png" type="Texture" id=242]
+[ext_resource path="res://Animations/Jump/Purple/sumo-jump-fall-impact0000-purple.png.png" type="Texture" id=243]
+[ext_resource path="res://Animations/SushiAnimations/dash/Purple/purple-sushi-sumo-dash0003.png" type="Texture" id=244]
+[ext_resource path="res://Animations/SushiAnimations/dash/Purple/purple-sushi-sumo-dash0004.png" type="Texture" id=245]
+[ext_resource path="res://Animations/TauntStun/blue/sumo-taunted0000.png" type="Texture" id=246]
+[ext_resource path="res://Animations/Push/Green/Push_00000.png" type="Texture" id=247]
+[ext_resource path="res://Animations/Push/Green/Push_00001.png" type="Texture" id=248]
+[ext_resource path="res://Animations/Push/Green/Push_00002.png" type="Texture" id=249]
+[ext_resource path="res://Animations/Taunt/purple/sumo_taunt0000.png" type="Texture" id=250]
+[ext_resource path="res://Animations/Taunt/purple/sumo_taunt0001.png" type="Texture" id=251]
+[ext_resource path="res://Animations/SushiAnimations/taunt/purple/sushi-sumo-taunt0000.png" type="Texture" id=252]
+[ext_resource path="res://Animations/SushiAnimations/taunt/purple/sushi-sumo-taunt0001.png" type="Texture" id=253]
+[ext_resource path="res://Animations/TauntStun/green/sumo-taunted0000.png" type="Texture" id=254]
+[ext_resource path="res://Animations/SushiAnimations/taunt/green/sushi-sumo-taunt0000.png" type="Texture" id=255]
+[ext_resource path="res://Animations/SushiAnimations/taunt/green/sushi-sumo-taunt0001.png" type="Texture" id=256]
+[ext_resource path="res://Animations/Taunt/blue/sumo_taunt0000.png" type="Texture" id=257]
+[ext_resource path="res://Animations/Taunt/blue/sumo_taunt0001.png" type="Texture" id=258]
+[ext_resource path="res://Animations/Taunt/green/sumo_taunt0000.png" type="Texture" id=259]
+[ext_resource path="res://Animations/Taunt/green/sumo_taunt0001.png" type="Texture" id=260]
+[ext_resource path="res://Animations/BlockStun/Red/sumo-slam0000.png" type="Texture" id=261]
+[ext_resource path="res://Animations/BlockStun/Red/sumo-slam0001.png" type="Texture" id=262]
+[ext_resource path="res://Animations/Idle/Green/sumo-idle0000-green.png.png" type="Texture" id=263]
+[ext_resource path="res://Animations/Idle/Green/sumo-idle0001-green.png.png" type="Texture" id=264]
+[ext_resource path="res://Animations/SushiAnimations/jump/Green/green-sushi-sumo-jump0000.png" type="Texture" id=265]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -464,27 +468,27 @@ animations = [ {
 "name": "Idle-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 55 ) ],
+"frames": [ ExtResource( 101 ) ],
 "loop": false,
 "name": "Block-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 101 ), ExtResource( 102 ) ],
+"frames": [ ExtResource( 102 ), ExtResource( 103 ) ],
 "loop": true,
 "name": "Stun-Red",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 103 ), ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ) ],
+"frames": [ ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ) ],
 "loop": false,
 "name": "Impact-Red",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 107 ), ExtResource( 108 ), ExtResource( 109 ), ExtResource( 110 ) ],
+"frames": [ ExtResource( 108 ), ExtResource( 109 ), ExtResource( 110 ), ExtResource( 111 ) ],
 "loop": false,
 "name": "Impact-Blue",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 111 ) ],
+"frames": [ ExtResource( 112 ) ],
 "loop": false,
 "name": "Jump-Sushi-Blue",
 "speed": 5.0
@@ -494,212 +498,212 @@ animations = [ {
 "name": "Impact-Green",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 112 ), ExtResource( 113 ), ExtResource( 114 ), ExtResource( 115 ), ExtResource( 116 ), ExtResource( 117 ) ],
+"frames": [ ExtResource( 113 ), ExtResource( 114 ), ExtResource( 115 ), ExtResource( 116 ), ExtResource( 117 ), ExtResource( 118 ) ],
 "loop": false,
 "name": "Death-Green",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 118 ) ],
+"frames": [ ExtResource( 119 ) ],
 "loop": false,
 "name": "Slam-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 119 ), ExtResource( 120 ), ExtResource( 121 ), ExtResource( 122 ), ExtResource( 123 ), ExtResource( 124 ) ],
+"frames": [ ExtResource( 120 ), ExtResource( 121 ), ExtResource( 122 ), ExtResource( 123 ), ExtResource( 124 ), ExtResource( 125 ) ],
 "loop": true,
 "name": "Walk-Green",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 125 ), ExtResource( 126 ) ],
+"frames": [ ExtResource( 126 ), ExtResource( 127 ) ],
 "loop": false,
 "name": "DashEnd-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 127 ), ExtResource( 128 ), ExtResource( 129 ) ],
+"frames": [ ExtResource( 128 ), ExtResource( 129 ), ExtResource( 130 ) ],
 "loop": false,
 "name": "DashBegin-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 130 ), ExtResource( 131 ) ],
+"frames": [ ExtResource( 131 ), ExtResource( 132 ) ],
 "loop": true,
 "name": "Idle-Sushi-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 132 ), ExtResource( 133 ) ],
+"frames": [ ExtResource( 133 ), ExtResource( 134 ) ],
 "loop": false,
 "name": "DashEnd-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 134 ), ExtResource( 135 ) ],
+"frames": [ ExtResource( 135 ), ExtResource( 136 ) ],
 "loop": true,
 "name": "Taunt-Red",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 136 ) ],
+"frames": [ ExtResource( 137 ) ],
 "loop": true,
 "name": "Fall-Sushi-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 94 ) ],
+"frames": [ ExtResource( 138 ) ],
 "loop": false,
 "name": "Block-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 137 ) ],
+"frames": [ ExtResource( 139 ) ],
 "loop": false,
 "name": "Slam-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 50 ) ],
+"frames": [ ExtResource( 140 ) ],
 "loop": false,
 "name": "Fall-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 138 ), ExtResource( 139 ), ExtResource( 140 ) ],
+"frames": [ ExtResource( 141 ), ExtResource( 142 ), ExtResource( 143 ) ],
 "loop": false,
 "name": "Push-Red",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 141 ), ExtResource( 142 ), ExtResource( 143 ), ExtResource( 144 ) ],
+"frames": [ ExtResource( 144 ), ExtResource( 145 ), ExtResource( 146 ), ExtResource( 147 ) ],
 "loop": false,
 "name": "SlamImpact-Red",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 145 ), ExtResource( 146 ) ],
+"frames": [ ExtResource( 148 ), ExtResource( 149 ) ],
 "loop": true,
 "name": "Taunt-Sushi-Red",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 147 ) ],
+"frames": [ ExtResource( 150 ) ],
 "loop": false,
 "name": "Slam-Sushi-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 148 ), ExtResource( 149 ) ],
+"frames": [ ExtResource( 151 ), ExtResource( 152 ) ],
 "loop": true,
 "name": "Dash-Sushi-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 150 ), ExtResource( 151 ), ExtResource( 152 ) ],
+"frames": [ ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ) ],
 "loop": false,
 "name": "Push-Purple",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ) ],
+"frames": [ ExtResource( 156 ), ExtResource( 157 ), ExtResource( 158 ) ],
 "loop": false,
 "name": "Push-Blue",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 156 ), ExtResource( 157 ), ExtResource( 158 ) ],
+"frames": [ ExtResource( 159 ), ExtResource( 160 ), ExtResource( 161 ) ],
 "loop": false,
 "name": "Push-Sushi-Purple",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 159 ), ExtResource( 160 ), ExtResource( 161 ) ],
+"frames": [ ExtResource( 162 ), ExtResource( 163 ), ExtResource( 164 ) ],
 "loop": false,
 "name": "Push-Sushi-Blue",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 162 ), ExtResource( 163 ), ExtResource( 164 ) ],
+"frames": [ ExtResource( 165 ), ExtResource( 166 ), ExtResource( 167 ) ],
 "loop": false,
 "name": "Push-Sushi-Red",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 165 ), ExtResource( 166 ), ExtResource( 167 ), ExtResource( 168 ), ExtResource( 169 ), ExtResource( 170 ) ],
+"frames": [ ExtResource( 168 ), ExtResource( 169 ), ExtResource( 170 ), ExtResource( 171 ), ExtResource( 172 ), ExtResource( 173 ) ],
 "loop": true,
 "name": "Walk-Sushi-Red",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 171 ), ExtResource( 172 ), ExtResource( 173 ), ExtResource( 174 ), ExtResource( 175 ) ],
+"frames": [ ExtResource( 174 ), ExtResource( 175 ), ExtResource( 176 ), ExtResource( 177 ), ExtResource( 178 ) ],
 "loop": false,
 "name": "PushStun-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 176 ), ExtResource( 177 ), ExtResource( 178 ), ExtResource( 179 ), ExtResource( 180 ) ],
+"frames": [ ExtResource( 179 ), ExtResource( 180 ), ExtResource( 181 ), ExtResource( 182 ), ExtResource( 183 ) ],
 "loop": false,
 "name": "PushStun-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 181 ), ExtResource( 182 ), ExtResource( 183 ), ExtResource( 184 ), ExtResource( 185 ) ],
+"frames": [ ExtResource( 184 ), ExtResource( 185 ), ExtResource( 186 ), ExtResource( 187 ), ExtResource( 188 ) ],
 "loop": false,
 "name": "PushStun-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 186 ), ExtResource( 187 ), ExtResource( 188 ), ExtResource( 189 ), ExtResource( 190 ) ],
+"frames": [ ExtResource( 189 ), ExtResource( 190 ), ExtResource( 191 ), ExtResource( 192 ), ExtResource( 193 ) ],
 "loop": false,
 "name": "PushStun-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 191 ), ExtResource( 192 ) ],
+"frames": [ ExtResource( 194 ), ExtResource( 195 ) ],
 "loop": true,
 "name": "Idle-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 193 ), ExtResource( 194 ) ],
+"frames": [ ExtResource( 196 ), ExtResource( 197 ) ],
 "loop": true,
 "name": "Idle-Sushi-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 195 ), ExtResource( 196 ) ],
+"frames": [ ExtResource( 198 ), ExtResource( 199 ) ],
 "loop": true,
 "name": "Eating-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 51 ) ],
+"frames": [ ExtResource( 200 ) ],
 "loop": false,
 "name": "Fall-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 197 ), ExtResource( 198 ) ],
+"frames": [ ExtResource( 201 ), ExtResource( 202 ) ],
 "loop": true,
 "name": "Eating-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 199 ), ExtResource( 200 ) ],
+"frames": [ ExtResource( 203 ), ExtResource( 204 ) ],
 "loop": true,
 "name": "Idle-Sushi-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 201 ) ],
+"frames": [ ExtResource( 205 ) ],
 "loop": false,
 "name": "Slam-Sushi-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 202 ), ExtResource( 203 ), ExtResource( 204 ) ],
+"frames": [ ExtResource( 206 ), ExtResource( 207 ), ExtResource( 208 ) ],
 "loop": false,
 "name": "Push-Sushi-Green",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 205 ), ExtResource( 206 ) ],
+"frames": [ ExtResource( 209 ), ExtResource( 210 ) ],
 "loop": true,
 "name": "Idle-Sushi-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 207 ), ExtResource( 208 ) ],
+"frames": [ ExtResource( 211 ), ExtResource( 212 ) ],
 "loop": true,
 "name": "Dash-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 209 ), ExtResource( 210 ), ExtResource( 211 ), ExtResource( 212 ) ],
+"frames": [ ExtResource( 213 ), ExtResource( 214 ), ExtResource( 215 ), ExtResource( 216 ) ],
 "loop": false,
 "name": "SlamImpact-Green",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 213 ), ExtResource( 214 ), ExtResource( 215 ), ExtResource( 216 ), ExtResource( 217 ), ExtResource( 218 ) ],
+"frames": [ ExtResource( 217 ), ExtResource( 218 ), ExtResource( 219 ), ExtResource( 220 ), ExtResource( 221 ), ExtResource( 222 ) ],
 "loop": true,
 "name": "Walk-Sushi-Purple",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 219 ) ],
+"frames": [ ExtResource( 223 ) ],
 "loop": false,
 "name": "Slam-Sushi-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 220 ) ],
+"frames": [ ExtResource( 224 ) ],
 "loop": true,
 "name": "Fall-Sushi-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 221 ), ExtResource( 222 ) ],
+"frames": [ ExtResource( 225 ), ExtResource( 226 ) ],
 "loop": true,
 "name": "Dash-Green",
 "speed": 5.0
@@ -709,97 +713,97 @@ animations = [ {
 "name": "Impact-Purple",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 223 ), ExtResource( 224 ) ],
+"frames": [ ExtResource( 227 ), ExtResource( 228 ) ],
 "loop": true,
 "name": "Stun-Purple",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 225 ), ExtResource( 226 ), ExtResource( 227 ), ExtResource( 228 ), ExtResource( 229 ), ExtResource( 230 ) ],
+"frames": [ ExtResource( 229 ), ExtResource( 230 ), ExtResource( 231 ), ExtResource( 232 ), ExtResource( 233 ), ExtResource( 234 ) ],
 "loop": true,
 "name": "Walk-Sushi-Green",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 231 ) ],
+"frames": [ ExtResource( 235 ) ],
 "loop": false,
 "name": "Slam-Sushi-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 232 ), ExtResource( 233 ) ],
+"frames": [ ExtResource( 236 ), ExtResource( 237 ) ],
 "loop": true,
 "name": "Eating-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 234 ), ExtResource( 235 ) ],
+"frames": [ ExtResource( 238 ), ExtResource( 239 ) ],
 "loop": true,
 "name": "Taunt-Sushi-Blue",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 236 ), ExtResource( 237 ), ExtResource( 238 ) ],
+"frames": [ ExtResource( 240 ), ExtResource( 241 ), ExtResource( 242 ) ],
 "loop": false,
 "name": "DashBegin-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 239 ) ],
+"frames": [ ExtResource( 243 ) ],
 "loop": false,
 "name": "Jump-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 240 ), ExtResource( 241 ) ],
+"frames": [ ExtResource( 244 ), ExtResource( 245 ) ],
 "loop": true,
 "name": "Dash-Sushi-Purple",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 242 ) ],
+"frames": [ ExtResource( 246 ) ],
 "loop": true,
 "name": "TauntStun-Blue",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 243 ), ExtResource( 244 ), ExtResource( 245 ) ],
+"frames": [ ExtResource( 247 ), ExtResource( 248 ), ExtResource( 249 ) ],
 "loop": false,
 "name": "Push-Green",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 246 ), ExtResource( 247 ) ],
+"frames": [ ExtResource( 250 ), ExtResource( 251 ) ],
 "loop": true,
 "name": "Taunt-Purple",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 248 ), ExtResource( 249 ) ],
+"frames": [ ExtResource( 252 ), ExtResource( 253 ) ],
 "loop": true,
 "name": "Taunt-Sushi-Purple",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 250 ) ],
+"frames": [ ExtResource( 254 ) ],
 "loop": true,
 "name": "TauntStun-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 251 ), ExtResource( 252 ) ],
+"frames": [ ExtResource( 255 ), ExtResource( 256 ) ],
 "loop": true,
 "name": "Taunt-Sushi-Green",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 253 ), ExtResource( 254 ) ],
+"frames": [ ExtResource( 257 ), ExtResource( 258 ) ],
 "loop": true,
 "name": "Taunt-Blue",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 255 ), ExtResource( 256 ) ],
+"frames": [ ExtResource( 259 ), ExtResource( 260 ) ],
 "loop": true,
 "name": "Taunt-Green",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 257 ), ExtResource( 258 ) ],
+"frames": [ ExtResource( 261 ), ExtResource( 262 ) ],
 "loop": false,
 "name": "BlockStun-Red",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 259 ), ExtResource( 260 ) ],
+"frames": [ ExtResource( 263 ), ExtResource( 264 ) ],
 "loop": true,
 "name": "Idle-Green",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 261 ) ],
+"frames": [ ExtResource( 265 ) ],
 "loop": false,
 "name": "Jump-Sushi-Green",
 "speed": 5.0

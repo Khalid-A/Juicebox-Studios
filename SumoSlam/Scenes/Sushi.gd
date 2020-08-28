@@ -25,12 +25,14 @@ func reparent(new_parent, set_available):
 		Global.set_entity_mask_bits(self, "Players", true)
 		global_position = old_position
 		set_linear_velocity(get_parent().get_sushi_trajectory())
+		set_collidable(true)
 		yield(get_tree().create_timer(0.5), "timeout")
 		state = AVAILABLE
 	else:
 		set_mode(MODE_KINEMATIC)
 		set_as_toplevel(false)
 		Global.set_entity_mask_bits(self, "Players", false)
+		set_collidable(false)
 		position = Vector2(0.0, 0.0) 
 		state = UNAVAILABLE
 		

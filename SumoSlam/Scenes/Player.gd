@@ -23,7 +23,7 @@ const SLAM_GRAVITY = 5 * DOWN_GRAVITY
 
 const SLAM_STUN_TIME = 0.5
 
-const PUSH_DISTANCE = 120
+const PUSH_DISTANCE = 60
 const PUSH_TIME = 0.3
 const PUSH_POWER = 30
 const PUSH_STUN_TIME = 1.0
@@ -152,10 +152,6 @@ func _physics_process(delta):
 		elif sumo_state[SLAM] == SLAMMED:
 			return
 		
-		# Handle push input.
-		if valid_trigger("push"):
-			push()
-		
 		# Handle block input.
 		if valid_trigger("block"):
 			block()
@@ -186,16 +182,21 @@ func _physics_process(delta):
 
 # Handles horizontal movement.
 func horizontal_movement(delta):
-	# Handles dash input.
+	# Handles dash or push input.
 	if valid_trigger("dash"):
 		dash()
+	elif valid_trigger("push"):
+		push()
 	
 	# If Sumo has dashed into a wall or platform, the dash is over.
-	if sumo_state[DASH] == DASHING and is_on_wall():
-		sumo_state[DASH] = DASHED
+	if is_on_wall():
+		if sumo_state[DASH] == DASHING:
+			sumo_state[DASH] = DASHED
+		elif sumo_state[PUSH] == PUSHING:
+			sumo_state[PUSH] = NOT_PUSHING
 	
-	# Handle non-dash horizontal input.
-	if sumo_state[DASH] != DASHING:
+	# Handle non-dash and non-push horizontal input.
+	if sumo_state[DASH] != DASHING and sumo_state[PUSH] != PUSHING:
 		if Input.is_action_pressed("ui_right%s" % id):
 			dir = Vector2.RIGHT
 			move(delta)
@@ -329,7 +330,7 @@ func push():
 			$PushColliderLeft.set_disabled(false)
 		Vector2.RIGHT:
 			$PushColliderRight.set_disabled(false)
-	velocity.x += dir.x * push_speed
+	velocity.x = dir.x * push_speed
 	velocity.y = 0
 
 # Perform a block.
