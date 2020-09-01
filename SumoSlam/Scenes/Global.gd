@@ -3,7 +3,7 @@ extends Node
 # warning-ignore:unused_class_variable
 var num_players = 4
 
-enum {ENVIRONMENT, PLAYERS, SUSHI, STRUCTURES}
+enum {ENVIRONMENT, PLAYERS, ITEMS, STRUCTURES}
 
 func set_entity_mask_bits(entity, layers, values):
 	
@@ -17,8 +17,8 @@ func set_entity_mask_bits(entity, layers, values):
 				layer = ENVIRONMENT
 			"Players":
 				layer = PLAYERS
-			"Sushi":
-				layer = SUSHI
+			"Items":
+				layer = ITEMS
 			"Structures":
 				layer = STRUCTURES
 				

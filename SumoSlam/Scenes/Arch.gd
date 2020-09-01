@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Structure
 
 # Arch signals
 signal victory(challenger, type)
@@ -6,35 +6,19 @@ signal victory(challenger, type)
 # Arch constants
 const COOLDOWN_TIME = 1.5
 
-# Arch identifiers
-var id 
+enum {IDLE, RINGING}
 
 # Arch variables
-var rung = false
 var ringer_id = -1
-
-var last_hit
-
-var size
 
 enum {WEAK, MID, HEAVY}
 
 func _ready():
 	var error = self.connect('victory', get_parent(), '_on_victory')
 	if error: print('Heavyweight victory signal error: %s' % error)
-	rung = false
-	
-func is_class(_class): 
-	return _class == "Arch"
 
-func get_class(): 
-	return "Arch"
-
-func init(p_id, p_pos):
-	self.id = p_id
-	self.position = p_pos
-	self.size = $Gong.get_shape().get_extents().y
-	self.last_hit = 0
+func init(p_id, p_name, p_pos):
+	structure_init("Arch", p_id, p_name, p_pos, IDLE, $Gong.get_shape().get_extents().y, $Gong)
 	$Anim.play("Idle")
 
 #func _process(__):
@@ -44,10 +28,10 @@ func init(p_id, p_pos):
 func pushed(player_id, __, __, __):
 	
 	# if enough time has elapsed since last gong ring
-	if not rung:
+	if state == IDLE:
 		
 		# set gong as rung for duration of animation
-		rung = true
+		state = RINGING
 		$Cooldown.start(COOLDOWN_TIME)
 		get_parent().player_stats[player_id]['gong_rings'] += 1
 		
@@ -76,5 +60,5 @@ func _on_cooldown():
 	if ringer_id >= 0:
 		emit_signal('victory', ringer_id, 'HEAVYWEIGHT')
 	else:
-		rung = false
+		state = IDLE
 		$Anim.play("Idle")

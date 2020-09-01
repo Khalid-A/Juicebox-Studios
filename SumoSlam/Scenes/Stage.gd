@@ -10,9 +10,7 @@ const PLAYER_SPAWN = {
 
 # Sumo circle initializations
 const SUMOCIRCLE_SPAWN = {
-	0: { 'POS': Vector2(400.5, 230) },
-	1: { 'POS': Vector2(240.5, 406) },
-	2: { 'POS': Vector2(560.5, 406) }
+	0: { 'POS': Vector2(400, 227) }
 }
 
 # Sushi stand initializations
@@ -28,10 +26,5 @@ const ARCH_SPAWN = {
 	0: { 'POS': Vector2(400, 403) }
 }
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

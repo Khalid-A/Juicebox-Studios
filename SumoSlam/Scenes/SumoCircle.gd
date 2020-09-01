@@ -1,20 +1,18 @@
-extends Area2D
+extends Structure
 
 # Sumo circle signals
 signal victory(challenger_id, type)
 
 # Progress Bar constants
 const WHITE = Color(1, 1, 1)
-const BAR_POSITION = Vector2(-10.0, 11.5)
-const BAR_MAX_SIZE = Vector2(20.0, 2.0)
+const BAR_POSITION = Vector2(-60, 35)
+const BAR_MAX_SIZE = Vector2(120.0, 6.0)
 
-# Sumo circle identifiers
-var id
+enum {IN_PROGRESS, WON}
 
 # Sumo circle variables
 var challenger_id = -1
 var challenge_start = null
-var challenge_won = false
 var arena_occupants = []
 var exit_time = null
 var exit_time_multiplier = 1
@@ -24,19 +22,12 @@ func _ready():
 	if error: print('Sumo circle victory signal error: %s' % error)
 	reset_challenge()
 	
-func is_class(_class): 
-	return _class == "SumoCircle"
-
-func get_class(): 
-	return "SumoCircle"
-	
-func init(p_id, p_pos):
-	self.id = p_id
-	self.position = p_pos
+func init(p_id, p_name, p_pos):
+	structure_init("SumoCircle", p_id, p_name, p_pos, IN_PROGRESS, 1, $Platform)
 	$CircleAnim.play("Unoccupied")
 	
 func _process(__):
-	if challenger_id >= 0 and !challenge_won:
+	if challenger_id >= 0 and state == IN_PROGRESS:
 		update_challenge_status()
 #		$Indicator.visible = true
 #		$Indicator.set_text(str(ceil($Countdown.time_left)))
@@ -53,6 +44,9 @@ func _process(__):
 
 # Tracks player that enters arena
 func _on_player_entered(body):
+	
+	if !body.is_class("Player"): return
+	
 	if challenger_id == -1:
 		challenger_id = body.id
 		challenge_start = OS.get_ticks_msec()
@@ -63,12 +57,15 @@ func _on_player_entered(body):
 
 # Ends tracking of player that leaves arena
 func _on_player_exited(body):
+	
+	if !body.is_class("Player"): return
+	
 	arena_occupants.erase(body.id)
 
 # Ends competition for sumo circle
 func _on_challenge_won():
-	if not challenge_won:
-		challenge_won = true
+	if state == IN_PROGRESS:
+		state = WON
 		get_parent().player_stats[challenger_id]['challenge_time'] += (OS.get_ticks_msec() - challenge_start) / 1000.0
 	#	$Indicator.visible = false
 		$ProgressBar.rect_size.x = 0

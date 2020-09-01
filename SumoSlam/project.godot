@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Scenes/Entity.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Scenes/Item.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Structure",
+"language": "GDScript",
+"path": "res://Scenes/Structure.gd"
+} ]
 _global_script_class_icons={
-
+"Entity": "",
+"Item": "",
+"Structure": ""
 }
 
 [application]
@@ -287,7 +304,7 @@ ui_taunt3={
 
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Players"
-2d_physics/layer_3="Sushi"
+2d_physics/layer_3="Items"
 2d_physics/layer_4="Structures"
 
 [rendering]

@@ -76,7 +76,7 @@ func _ready():
 		
 	for id in num_sumo_circles:
 		var new_circle = SUMOCIRCLE_NODE.instance()
-		new_circle.init(id, $Stage.SUMOCIRCLE_SPAWN[id]['POS'])
+		new_circle.init(id, 'SumoCircle %s' % [id+1], $Stage.SUMOCIRCLE_SPAWN[id]['POS'])
 		add_child(new_circle)
 		
 	for id in num_sushi_stands:
@@ -86,7 +86,7 @@ func _ready():
 	
 	for id in num_arches:
 		var new_arch = ARCH_NODE.instance()
-		new_arch.init(id, $Stage.ARCH_SPAWN[id]['POS'])
+		new_arch.init(id, 'Arch %s' % [id+1], $Stage.ARCH_SPAWN[id]['POS'])
 		add_child(new_arch)
 	
 	start_time = OS.get_ticks_msec()
